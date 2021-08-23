@@ -20,13 +20,16 @@ public class Task2 {
 
         total = 0;
         i = 0;
-
+        int k=0;
+        System.out.print("\nThe average of random " + a + " numbers( ");
         while (i < a) {
             Random rand = new Random();
-            total += rand.nextInt(999);
+            k=rand.nextInt(999);
+            total += k;
+            System.out.print(k + " ");
             i++;
         }
-        System.out.println("\nThe average of random " + a + " numbers is: " + total / a);
+        System.out.println(") is: " + total / a);
 
     }
 }
