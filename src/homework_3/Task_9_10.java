@@ -18,19 +18,19 @@ public class Task_9_10 {
 
         // Task 9
         int temp = array[0];
-        for (int i = 0; i < array.length; i++) {
-
-            if(temp>array[i]){
-                temp=array[i];}
+        for (int j : array) {
+            if (temp > j) {
+                temp = j;
+            }
         }
         System.out.println("\n\nThe smallest number of array is: " + temp);
 
         //Task 10
         int temp2 = array[0];
-        for (int i = 0; i < array.length; i++) {
-
-            if(temp2<array[i]){
-                temp2=array[i];}
+        for (int j : array) {
+            if (temp2 < j) {
+                temp2 = j;
+            }
         }
         System.out.print("The largest number of array is: " + temp2);
 
