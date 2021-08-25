@@ -10,29 +10,29 @@ public class Task_9_10 {
         System.out.print("Enter length of array: ");
         int[] array = new int[scan.nextInt()];
 
+        System.out.println("The array is:");
         for (int i = 0; i < array.length; i++) {
             array[i] = rand.nextInt(999);
             System.out.print(array[i] + " ");
         }
 
         // Task 9
+        int temp = array[0];
+        for (int i = 0; i < array.length; i++) {
 
-        int temp = 0;
-        for (int i = 0; i < array.length-1; i++) {
-            if(array[i]<array[i+1])
-                temp=array[i];
-            for (int j = i + 1; j < array.length; j++) {
-                if (array[i] > array[j])
-                    if (array[j] < temp)
-                    temp = array[j];
-                else
-                    if (array[i] <temp)
-                    temp = array[i];
-            }
+            if(temp>array[i]){
+                temp=array[i];}
         }
+        System.out.println("\n\nThe smallest number of array is: " + temp);
 
-        System.out.println("\n" + temp);
+        //Task 10
+        int temp2 = array[0];
+        for (int i = 0; i < array.length; i++) {
 
+            if(temp2<array[i]){
+                temp2=array[i];}
+        }
+        System.out.print("The largest number of array is: " + temp2);
 
     }
 }
