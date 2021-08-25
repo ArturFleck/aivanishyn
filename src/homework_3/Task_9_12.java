@@ -18,26 +18,6 @@ public class Task_9_12 {
         }
         System.out.println("\nThe average of array is: " + counter / array.length); // Task 12
 
-        /*// Task 9
-        int min = array[0];
-        int indexTemp1;
-        for (int j : array) {
-            if (min > j) {
-                min = j;
-            }
-        }
-        System.out.println("\n\nThe smallest number of array is: " + min);
-
-        //Task 10
-        int max = array[0];
-        int indexTemp2;
-        for (int j : array) {
-            if (max < j) {
-                max = j;
-            }
-        }
-        System.out.print("The largest number of array is: " + max);*/
-
         //Combined Tasks 9-11
         int min = array[0];
         int max = array[0];
