@@ -6,49 +6,53 @@ public class Car {
     private double fuelLeftInTank;
     private double fuelOfficiency;
     private int milesForDestinacion;
-    private int milegeTillFirstStop;
-    private int milegeTillSecondStop;
     private int gasCost = 31;
 
-    public Car(double tankCapacity, double fuelLeftInTank, double fuelOfficiency, int milesForDestinacion, int milegeTillFirstStop, int milegeTillSecondStop) {
+    public Car(double tankCapacity, double fuelLeftInTank, double fuelOfficiency) {
         this.tankCapacity = tankCapacity;
         this.fuelLeftInTank = fuelLeftInTank;
         this.fuelOfficiency = fuelOfficiency;
-        this.milesForDestinacion = milegeTillSecondStop;
-        this.milegeTillFirstStop = milegeTillFirstStop;
-        this.milegeTillSecondStop = milegeTillSecondStop;
     }
 
-    public double getFuelLeftInTank() {
-        return fuelLeftInTank;
-    }
-
-    public void setFuelLeftInTank(double fuelLeftInTank) {
+    public Car(double tankCapacity, double fuelLeftInTank, double fuelOfficiency, int milesForDestinacion) {
+        this.tankCapacity = tankCapacity;
         this.fuelLeftInTank = fuelLeftInTank;
+        this.fuelOfficiency = fuelOfficiency;
+        this.milesForDestinacion = milesForDestinacion;
     }
 
-    public double getTankCapacity() {
-        return tankCapacity;
+
+    public void fillTank() {
+        double filling = tankCapacity - fuelLeftInTank;
+        this.fuelLeftInTank = tankCapacity;
+        double cost = gasCost * filling;
+        System.out.println("You fill " + filling + " liters of fuel");
+        System.out.println("It cost you " + cost + " hrn.");
     }
 
-    public double getFuelOfficiency() {
-        return fuelOfficiency;
+    public void run(int milege) {
+        double m = milege/fuelOfficiency;
+        fuelLeftInTank -= m;
+        System.out.println("You run " + milege + "km");
     }
 
-    public int getMilesForDestinacion() {
-        return milesForDestinacion;
+    public void whatLeftInTank(){
+        System.out.println("In tank " + fuelLeftInTank +" liters of fuel");
     }
 
-    public int getMilegeTillFirstStop() {
-        return milegeTillFirstStop;
-    }
+    public void trip(int milege){
+        double fuelForTrip = milege/fuelOfficiency;
 
-    public int getMilegeTillSecondStop() {
-        return milegeTillSecondStop;
-    }
-
-    public int getGasCost() {
-        return gasCost;
+        if(fuelForTrip > fuelLeftInTank){
+            double fuel = fuelForTrip - fuelLeftInTank;
+            System.out.println("Not enough fuel");
+            System.out.println("Needed fuel for trip " + fuelForTrip + "liters");
+            whatLeftInTank();
+            System.out.println("For trip your you need fo fill " + fuel + " liters of fuel");
+        }else {
+            double tank = fuelLeftInTank - fuelForTrip;
+            System.out.println("After trip at " + milege + " km gonna left " + tank + " litest of fuel in your tank");
+        }
     }
 
 }
