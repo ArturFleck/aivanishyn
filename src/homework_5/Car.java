@@ -36,6 +36,7 @@ public class Car {
         if((fuelLeftInTank + gas)>tankCapacity)
         {
             gas = tankCapacity-fuelLeftInTank;
+            System.out.println("You can't feel than capacity of tank.");
         }
 
         double filling = fuelLeftInTank + gas;
