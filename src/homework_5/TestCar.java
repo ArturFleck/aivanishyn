@@ -20,6 +20,7 @@ public class TestCar {
         car1.whatLeftInTank();
 
         car1.fillTank(20);
+        car1.fillTank(21);
 
     }
 }

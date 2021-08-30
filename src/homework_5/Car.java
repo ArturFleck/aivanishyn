@@ -32,7 +32,12 @@ public class Car {
     }
 
     // Filling tank by input value
-    public void fillTank(int gas) {
+    public void fillTank(double gas) {
+        if((fuelLeftInTank + gas)>tankCapacity)
+        {
+            gas = tankCapacity-fuelLeftInTank;
+        }
+
         double filling = fuelLeftInTank + gas;
         this.fuelLeftInTank = filling;
         double cost = gasCost * filling;

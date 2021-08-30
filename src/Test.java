@@ -29,7 +29,6 @@ public class Test {
         end = System.currentTimeMillis();
         System.out.println("Second " +(end - start));
 
-
     }
 
     static int sumEvenDigits ( int number){
@@ -55,7 +54,6 @@ public class Test {
         }
         return sum;
     }
-
 }
 
 
