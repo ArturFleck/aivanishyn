@@ -15,10 +15,18 @@ public class Calculator {
         String[] words = str.split(" ");
         double res = 0;
 
-        if (words[1].equals("/") ) {
-            res = Double.parseDouble(words[0])/ Double.parseDouble(words[2]);
+        if (words[1].equals("/")) {
+            res = Double.parseDouble(words[0]) / Double.parseDouble(words[2]);
+        }
+        if (words[1].equals("*")) {
+            res = Double.parseDouble(words[0]) * Double.parseDouble(words[2]);
+        }
+        if (words[1].equals("-")) {
+            res = Double.parseDouble(words[0]) - Double.parseDouble(words[2]);
+        }
+        if (words[1].equals("6")) {
+            res = Double.parseDouble(words[0]) + Double.parseDouble(words[2]);
         }
         return res;
     }
-
 }
