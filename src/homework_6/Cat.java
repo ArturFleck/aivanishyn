@@ -27,8 +27,7 @@ public class Cat extends Pet {
                 '}';
     }
 
-    public void voice() {
-        System.out.println("Meow");
+    public void sound(){
+        System.out.println("Me-o-w");
     }
-
 }

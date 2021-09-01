@@ -13,10 +13,6 @@ public class Dog extends Pet {
         setTrained(trained);
     }
 
-    public boolean isTrained() {
-        return trained;
-    }
-
     public void setTrained(boolean trained) {
         this.trained = trained;
     }
@@ -41,7 +37,6 @@ public class Dog extends Pet {
     }
 
     public void lead() {
-        System.out.println("Hello my name is " + getName() + "");
         if (trained) {
             System.out.println("I can take you home. Follow me...");
         } else {
@@ -49,7 +44,7 @@ public class Dog extends Pet {
         }
     }
 
-    public void voice() {
+    public void sound(){
         System.out.println("Woof Woof");
     }
 }

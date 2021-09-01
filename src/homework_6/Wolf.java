@@ -7,5 +7,4 @@ public class Wolf extends Wild{
         setWeight(weight);
         setPreadtor(predator);
     }
-
 }

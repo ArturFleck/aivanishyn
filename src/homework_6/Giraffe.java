@@ -8,5 +8,4 @@ public class Giraffe extends Wild{
         setWeight(weight);
         setPreadtor(predator);
     }
-
 }

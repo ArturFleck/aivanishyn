@@ -1,8 +1,8 @@
 package homework_6;
 
-public class Wild extends Ground{
+public class Wild extends Ground {
 
-private boolean isPreadtor;
+    private boolean isPreadtor;
 
     public boolean isPreadtor() {
         return isPreadtor;
@@ -13,14 +13,20 @@ private boolean isPreadtor;
     }
 
 
+    public void voice() {
+        String str = this.getClass().getName();
+        String[] words = str.split("6.");
+        //System.out.println(words[1]);
+        System.out.print("\nI'm a wild animal. I'm " + words[1]);
+        hungry();
+    }
 
-    public void hungry(){
-        if (isPreadtor){
+    public void hungry() {
+
+        if (isPreadtor) {
             System.out.println(" and I am angry.");
-        }
-        else{
+        } else {
             System.out.println(" and I'm eating grass of leaves.");
         }
     }
-
 }

@@ -18,8 +18,16 @@ public class Fish extends Water{
                 '}';
     }
 
-    public void voice(){
-        System.out.println("-----");
+    public void voice() {
+        String str = this.getClass().getName();
+        String[] words = str.split("6.");
+        System.out.println("\nHi there I'm " + words[1] + ".");
+        sound();
     }
+
+    public void sound(){
+        System.out.println("O-o-O-o-o-o-O-o-0");
+    }
+
 
 }

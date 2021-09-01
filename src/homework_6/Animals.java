@@ -40,6 +40,7 @@ public class Animals {
         this.colour = colour;
     }
 
-    public void voice(){}
+    public void sound() {
+    }
 
 }

@@ -8,12 +8,4 @@ public class Lion extends Wild{
         setWeight(weight);
         setPreadtor(predator);
     }
-
-    public void voice() {
-
-        System.out.print("\nI'm a wild animal. I'm Lion");
-        hungry();
-
-    }
-
 }
