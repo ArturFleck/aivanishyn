@@ -3,36 +3,39 @@ package homework_6;
 public class Main {
     public static void main(String[] args) {
 
-        Cat cat1 = new Cat("Blacky");
-        cat1.setId(0);
-        cat1.setAge(3);
-        cat1.voice();
-        cat1.setColour("Gray");
-        cat1.setWeight(5);
+        Cat cat1 = new Cat("Blacky", 1, 3, 7,true);
+        cat1.setColour(Colours.White);
         System.out.println(cat1);
+        cat1.voice();
 
-        Cat cat2 = new Cat("Grady");
-        cat2.setId(1);
-        cat2.setAge(1);
-        cat2.voice();
-        cat2.setColour("Black");
-        cat2.setWeight(3);
+        Cat cat2 = new Cat("Grady",2,7,9,false);
+        cat2.setColour(Colours.Black);
         System.out.println(cat2);
+        cat2.voice();
 
-        Dog dog1= new Dog("Bulky");
-        dog1.setTrained(true);
-        dog1.setAge(12);
-        dog1.setColour("Red");
-        dog1.setId(3);
-        dog1.setWeight(25);
+        Dog dog1 = new Dog("Bulky", 12, 5, 25,true, true);
+        dog1.setColour(Colours.Red);
         System.out.println(dog1);
+        dog1.voice();
         dog1.lead();
 
-        Dog dog2= new Dog("Brady");
-
-
+        Dog dog2 = new Dog("Brady", 3, 5, 37,false, false);
+        dog2.setColour(Colours.Brown);
         System.out.println(dog2);
+        dog2.voice();
         dog2.lead();
+
+        Fish fish2 = new Fish();
+
+        Lion lion = new Lion(22,15,79,true);
+        lion.voice();
+
+        Wolf wolf = new Wolf(31,20,47,true);
+        wolf.voice();
+
+        Giraffe giraffe = new Giraffe(41,71,365,false);
+        giraffe.voice();
+
 
     }
 }

@@ -1,14 +1,6 @@
 package homework_6;
 
-public class Cat extends Pet {
-
-    public Cat(String name,int id, int age, int weight, boolean isVaccinated) {
-        setName(name);
-        setId(id);
-        setAge(age);
-        setWeight(weight);
-        setVaccinated(isVaccinated);
-    }
+public class Fish extends Water{
 
     public String toString() {
         int year = getAge();
@@ -18,17 +10,16 @@ public class Cat extends Pet {
         } else {
             years = year + " years old";
         }
-        return "\nCat{" + getName()
-                +
-                ", id=" + getId() +
+        return "\nFish{" +
+                "id=" + getId() +
                 ", age=" + years +
                 ", weight=" + getWeight() +
                 "kg, colour='" + getColour() + '\'' +
                 '}';
     }
 
-    public void voice() {
-        System.out.println("Meow");
+    public void voice(){
+        System.out.println("-----");
     }
 
 }

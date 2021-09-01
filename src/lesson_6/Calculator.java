@@ -24,7 +24,7 @@ public class Calculator {
         if (words[1].equals("-")) {
             res = Double.parseDouble(words[0]) - Double.parseDouble(words[2]);
         }
-        if (words[1].equals("6")) {
+        if (words[1].equals("+")) {
             res = Double.parseDouble(words[0]) + Double.parseDouble(words[2]);
         }
         return res;

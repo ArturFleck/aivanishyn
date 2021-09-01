@@ -4,8 +4,13 @@ public class Dog extends Pet {
 
     private boolean trained;
 
-    public Dog(String name) {
-        super(name);
+    public Dog(String name,int id, int age, int weight, boolean isVaccinated,boolean trained) {
+        setName(name);
+        setId(id);
+        setAge(age);
+        setWeight(weight);
+        setVaccinated(isVaccinated);
+        setTrained(trained);
     }
 
     public boolean isTrained() {
@@ -20,14 +25,15 @@ public class Dog extends Pet {
         int year = getAge();
         String years;
         if (year == 1) {
-            years = " year old";
+            years = year + " year old";
         } else {
-            years = " years old";
+            years = year + " years old";
         }
 
-        return "\nDog{" +
-                "id=" + getId() +
-                ", age=" + year + years +
+        return "\nDog{"+ getName()
+                +
+                ", id=" + getId() +
+                ", age=" + years +
                 ", weight=" + getWeight() +
                 "kg, colour='" + getColour() + '\'' +
                 " trained=" + trained +
@@ -35,14 +41,15 @@ public class Dog extends Pet {
     }
 
     public void lead() {
+        System.out.println("Hello my name is " + getName() + "");
         if (trained) {
             System.out.println("I can take you home. Follow me...");
         } else {
-            System.out.println("This dog is not trained");
+            System.out.println("I'm not trained");
         }
     }
 
     public void voice() {
-        System.out.println("Bark");
+        System.out.println("Woof Woof");
     }
 }

@@ -5,7 +5,8 @@ public class Animals {
     private int id;
     private int age;
     private double weight;
-    private String colour;
+    Colours colour;
+
 
     public int getId() {
         return id;
@@ -31,23 +32,14 @@ public class Animals {
         this.weight = weight;
     }
 
-    public String getColour() {
+    public Colours getColour() {
         return colour;
     }
 
-    public void setColour(String colour) {
+    public void setColour(Colours colour) {
         this.colour = colour;
     }
 
     public void voice(){}
 
-/*    @Override
-    public String toString() {
-        return "Animal{" +
-                "id=" + id +
-                ", age=" + age +
-                ", weight=" + weight +
-                "kg, colour='" + colour + '\'' +
-                '}';
-    }*/
 }
