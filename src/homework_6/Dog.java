@@ -4,13 +4,14 @@ public class Dog extends Pet {
 
     private boolean trained;
 
-    public Dog(String name,int id, int age, int weight, boolean isVaccinated,boolean trained) {
+    public Dog(String name, int id, int age, int weight, boolean isVaccinated, boolean trained, Colours colours) {
         setName(name);
         setId(id);
         setAge(age);
         setWeight(weight);
         setVaccinated(isVaccinated);
         setTrained(trained);
+        setColour(colours);
     }
 
     public void setTrained(boolean trained) {
@@ -26,7 +27,7 @@ public class Dog extends Pet {
             years = year + " years old";
         }
 
-        return "\nDog{"+ getName()
+        return objectClassName() + "{" + getName()
                 +
                 ", id=" + getId() +
                 ", age=" + years +
@@ -44,7 +45,7 @@ public class Dog extends Pet {
         }
     }
 
-    public void sound(){
+    public void sound() {
         System.out.println("Woof Woof");
     }
 }

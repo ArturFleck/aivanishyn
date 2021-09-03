@@ -7,7 +7,6 @@ public class Animals {
     private double weight;
     Colours colour;
 
-
     public int getId() {
         return id;
     }
@@ -41,6 +40,13 @@ public class Animals {
     }
 
     public void sound() {
+    }
+
+    public String objectClassName(){
+        String str = this.getClass().getName();     // catching class name of object what's called
+        String[] words = str.split("6.");
+        String name = (words[1]);
+        return name;
     }
 
 }

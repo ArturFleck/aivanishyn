@@ -2,12 +2,13 @@ package homework_6;
 
 public class Cat extends Pet {
 
-    public Cat(String name,int id, int age, int weight, boolean isVaccinated) {
+    public Cat(String name, int id, int age, int weight, boolean isVaccinated, Colours colours) {
         setName(name);
         setId(id);
         setAge(age);
         setWeight(weight);
         setVaccinated(isVaccinated);
+        setColour(colours);
     }
 
     public String toString() {
@@ -18,7 +19,7 @@ public class Cat extends Pet {
         } else {
             years = year + " years old";
         }
-        return "\nCat{" + getName()
+        return objectClassName() + "{" + getName()
                 +
                 ", id=" + getId() +
                 ", age=" + years +
@@ -27,7 +28,7 @@ public class Cat extends Pet {
                 '}';
     }
 
-    public void sound(){
+    public void sound() {
         System.out.println("Me-o-w");
     }
 }

@@ -11,7 +11,6 @@ public class Pet extends Ground {
     }
 
     public Pet() {
-
     }
 
     public String getName() {
@@ -30,15 +29,10 @@ public class Pet extends Ground {
         isVaccinated = vaccinated;
     }
 
-
     public void voice() {
-        String str = this.getClass().getName();
-        String[] words = str.split("6.");
-        System.out.println("\nHi there I'm " + words[1] + ".");
+        System.out.println("\nHi there I'm " + objectClassName() + ".");
         System.out.println("My name is " + getName());
         sound();
     }
-
-
 
 }

@@ -1,6 +1,16 @@
 package homework_6;
 
-public class Fish extends Water{
+public class Fish extends Water {
+
+    public Fish() {
+    }
+
+    public Fish(int id, int age, int weight, Colours colours) {
+        setId(id);
+        setAge(age);
+        setWeight(weight);
+        setColour(colours);
+    }
 
     public String toString() {
         int year = getAge();
@@ -10,7 +20,7 @@ public class Fish extends Water{
         } else {
             years = year + " years old";
         }
-        return "\nFish{" +
+        return objectClassName() + "{" +
                 "id=" + getId() +
                 ", age=" + years +
                 ", weight=" + getWeight() +
@@ -19,15 +29,12 @@ public class Fish extends Water{
     }
 
     public void voice() {
-        String str = this.getClass().getName();
-        String[] words = str.split("6.");
-        System.out.println("\nHi there I'm " + words[1] + ".");
+        System.out.println("\nHi there I'm " + objectClassName() + ".");
         sound();
     }
 
-    public void sound(){
+    public void sound() {
         System.out.println("O-o-O-o-o-o-O-o-0");
     }
-
 
 }
