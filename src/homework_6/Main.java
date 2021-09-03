@@ -20,11 +20,14 @@ public class Main {
         dog2.lead();
         System.out.println(dog2);
 
+        Hamster hamster = new Hamster("Sady", 23, 3, 1, false, Colours.Yellow);
+        System.out.println("\n" + hamster);
+
         Fish fish1 = new Fish();
         fish1.voice();
         System.out.println(fish1);
 
-        Fish fish2 = new Fish(55, 2, 8, Colours.Green);
+        Fish fish2 = new Fish(55, 22, 8, Colours.Green);
         fish2.voice();
         System.out.println(fish2);
 
@@ -39,5 +42,8 @@ public class Main {
         Giraffe giraffe = new Giraffe(41, 71, 365, false, Colours.Yellow);
         giraffe.voice();
         System.out.println(giraffe);
+
+        Crocodyle crocodyle = new Crocodyle(42, 44, 175, true, Colours.Green);
+        System.out.println("\n" + crocodyle);
     }
 }
