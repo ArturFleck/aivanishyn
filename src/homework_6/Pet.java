@@ -1,7 +1,5 @@
 package homework_6;
 
-
-
 public class Pet extends Ground {
     private String name;
     private boolean isVaccinated;
@@ -28,6 +26,7 @@ public class Pet extends Ground {
     public void setVaccinated(boolean vaccinated) {
         isVaccinated = vaccinated;
     }
+
 
     public void voice() {
         System.out.println("\nHi there I'm " + objectClassName() + ".");
