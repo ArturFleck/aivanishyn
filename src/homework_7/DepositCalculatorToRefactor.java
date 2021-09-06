@@ -13,17 +13,37 @@ public class DepositCalculatorToRefactor {
         System.out.println();
 
         for (int i = 1; i <= term; i++) {
+
             double y = sum / 100 * percent;
             sum = sum + y;
-            if (i == 1) {
-                System.out.println("Накопленная сумма за " + i + " год составила: " + String.format("%.2f",sum).replace(",",".") + " грн");
-            } else if (i > 1 && i <= 4) {
-                System.out.println("Накопленная сумма за " + i + " года составила: " + String.format("%.2f",sum).replace(",",".")+ " грн");
-            } else {
-                System.out.println("Накопленная сумма за " + i + " лет составила: " + String.format("%.2f",sum).replace(",",".")+ " грн");
-            }
-            System.out.println("Начисленные проценты в грн: " + String.format("%.2f",y).replace(",","."));
+
+                System.out.println("Накопленная сумма за " + i + termName(i) +  " составила: " + format(sum) + " грн");
+
+            System.out.println("Начисленные проценты в грн: " + format(y));
             System.out.println("----------------------------------");
         }
     }
+
+    public static String format(double number){
+        String form=String.format("%.2f",number).replace(",",".");
+        return form;
+    }
+
+    public static String termName(int term){
+        int ageLastNumber = term % 10;
+        boolean isExclusion = (term % 100 >= 11) && (term % 100 <= 14);
+        String years = "";
+
+        if (ageLastNumber == 1)
+            years = " год";
+        else if(ageLastNumber == 0 || ageLastNumber >= 5 && ageLastNumber <= 9)
+            years = " лет";
+        else if(ageLastNumber >= 2 && ageLastNumber <= 4)
+            years = " года";
+        if (isExclusion)
+            years = " лет";
+
+        return years;
+    }
+
 }
