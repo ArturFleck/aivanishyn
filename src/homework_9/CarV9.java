@@ -58,9 +58,9 @@ public class CarV9 {
                 "tripDistance=" + tripDistance +
                 ", tripMoneySpent=" + tripMoneySpent +
                 ", location='" + location + '\'' +
-                ", tankCapacity=" + tankCapacity +
-                ", currentFuelLevel=" + currentFuelLevel +
-                ", fuelConsumption=" + fuelConsumption +
+                ", tankCapacity=" + String.format("%.2f",tankCapacity) +
+                ", currentFuelLevel=" + String.format("%.2f",currentFuelLevel) +
+                ", fuelConsumption=" + String.format("%.2f",fuelConsumption) +
                 '}';
     }
 }
