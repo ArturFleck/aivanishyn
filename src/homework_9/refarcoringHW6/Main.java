@@ -29,6 +29,7 @@ public class Main {
         wolf.sound();
         wolf.swim();
 
+
         System.out.println("----------------------------");
         Wild.Giraffe giraffe = new Wild.Giraffe(5,25,275,false,"Yellow");
         System.out.println(giraffe);
@@ -36,5 +37,6 @@ public class Main {
         giraffe.hungry();
         giraffe.sound();
         giraffe.swim();
+
     }
 }
