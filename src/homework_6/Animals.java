@@ -1,6 +1,8 @@
 package homework_6;
 
-public class Animals {
+import homework_9.refarcoringHW6.Sound;
+
+public class Animals implements Sound {
 
     private int id;
     private int age;
