@@ -1,7 +1,7 @@
 package homework_11;
 
 public class StringCollectionImp implements StringCollection{
-    String[] array = new String[0];
+    private String[] array = new String[0];
 
     @Override
     public String get(int index) {
@@ -10,8 +10,16 @@ public class StringCollectionImp implements StringCollection{
 
     @Override
     public boolean add(String str) {
-        return false;
+        String [] newArr = new String[array.length+1];
+        for (int x=0; x<array.length; x++){
+            newArr[x]= array[x];
+        }
+        newArr[newArr.length-1]=str;
+        this.array = newArr;
+        return true;
     }
+
+    nullPointerException
 
     @Override
     public boolean add(int index, String str) {
@@ -40,6 +48,6 @@ public class StringCollectionImp implements StringCollection{
 
     @Override
     public int size() {
-        return 0;
+        return this.array.length;
     }
 }
