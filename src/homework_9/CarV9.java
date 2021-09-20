@@ -7,7 +7,7 @@ public class CarV9 {
 
     double tripDistance = 0;
     double tripMoneySpent = 0;
-    String location = "Odessa";
+    String location;
     double tankCapacity = 30 + (rand * (60 - 30));
     double currentFuelLevel = (tankCapacity / 100) * (10 + (rand * 40));
     double fuelConsumption = 5 + (rand * (15 - 5));
@@ -26,26 +26,31 @@ public class CarV9 {
 
     public void fillTank(double liters, double fuelPrice) {
         if (liters > availableSpaceInTank()) {
-            //System.out.println("Fill " + availableSpaceInTank());
             currentFuelLevel = tankCapacity;
             tripMoneySpent += (availableSpaceInTank() * fuelPrice);
         } else {
             currentFuelLevel += liters;
             tripMoneySpent += (liters * fuelPrice);
-            //System.out.println("Fill " + liters);
         }
-        //System.out.println("Spent $ "+tripMoneySpent);
     }
 
     public void drive(double distance, String destination) {
-        System.out.printf("We are going to %s. %s km...", destination, distance);
-        location = destination;
-        currentFuelLevel -= ((distance / 100) * fuelConsumption);
-        setTripDistance(distance);
+
+        if (currentFuelLevel-((distance / 100) * fuelConsumption)>0)
+        {
+            System.out.printf("We are going to %s. %s km...", destination, distance);
+            location = destination;
+            currentFuelLevel -= ((distance / 100) * fuelConsumption);
+            setTripDistance(distance);
+        }
+        else{
+            System.out.println("Not Enough Fuel");
+            System.exit(0);
+        }
     }
 
     public void printTripReport() {
-        System.out.println("\nCurrent fuel level "+ String.format("%.2f",currentFuelLevel) +"liters. Distance was spent " + tripDistance + "km. Money Spent " + String.format("%.2f",tripMoneySpent) + "hrn. Location " + location);
+        System.out.println("\nCurrent fuel level " + format(currentFuelLevel) + "liters. Distance was spent " + tripDistance + "km. Money Spent " + format(tripMoneySpent) + "hrn. Location " + location);
     }
 
     private double availableSpaceInTank() {
@@ -58,9 +63,13 @@ public class CarV9 {
                 "tripDistance=" + tripDistance +
                 ", tripMoneySpent=" + tripMoneySpent +
                 ", location='" + location + '\'' +
-                ", tankCapacity=" + String.format("%.2f",tankCapacity) +
-                ", currentFuelLevel=" + String.format("%.2f",currentFuelLevel) +
-                ", fuelConsumption=" + String.format("%.2f",fuelConsumption) +
+                ", tankCapacity=" + String.format("%.2f", tankCapacity) +
+                ", currentFuelLevel=" + String.format("%.2f", currentFuelLevel) +
+                ", fuelConsumption=" + String.format("%.2f", fuelConsumption) +
                 '}';
+    }
+
+    public static String format(double text) {
+        return String.format("%.2f", text);
     }
 }
