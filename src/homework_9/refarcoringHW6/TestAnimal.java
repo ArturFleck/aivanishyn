@@ -1,6 +1,6 @@
 package homework_9.refarcoringHW6;
 
-public class Main {
+public class TestAnimal {
     public static void main(String[] args) {
         Fish fish = new Fish(1,3,2,"Green");
         System.out.println(fish);

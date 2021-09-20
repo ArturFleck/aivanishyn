@@ -19,7 +19,7 @@ public class StringCollectionImp implements StringCollection{
         return true;
     }
 
-    nullPointerException
+
 
     @Override
     public boolean add(int index, String str) {

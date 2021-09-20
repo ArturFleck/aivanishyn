@@ -44,8 +44,7 @@ public class CarV9 {
             setTripDistance(distance);
         }
         else{
-            System.out.println("Not Enough Fuel");
-            System.exit(0);
+            throw new IllegalArgumentException("Not Enough Fuel");
         }
     }
 
