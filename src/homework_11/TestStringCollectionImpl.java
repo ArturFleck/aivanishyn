@@ -13,12 +13,13 @@ public class TestStringCollectionImpl {
         // Check add elements
         assert (c.add("one"));
         assert (c.add("two"));
-        System.out.println(c);
+        //System.out.println(c);
+        //System.out.println(c.get(1));
         assert (c.get(0).equals("one"));
         assert (c.get(1).equals("two"));
 
         // Check contains element
-        /*assert (c.contains("one"));
+        assert (c.contains("one"));
         assert (!c.contains("three"));
 
         // Check delete element by value
@@ -39,6 +40,8 @@ public class TestStringCollectionImpl {
         StringCollectionImpl c1 = new StringCollectionImpl();
         assert (c1.add("one"));
         assert (c1.add("five"));
+        System.out.println(c);
+        System.out.println(c1);
         assert (c1.equals(c));
         assert (c1.add("ten"));
         assert (!c1.equals(c));
@@ -47,6 +50,6 @@ public class TestStringCollectionImpl {
         assert (c.clear());
         assert (!c.contains("Some value"));
         assert (!c.delete("Some value"));
-        assert (c.size() == 0);*/
+        assert (c.size() == 0);
     }
 }
