@@ -4,18 +4,13 @@ public class Employee {
     int id;
     String name;
     String surname;
-    int departmentId;
+    String departmentId;
 
-    public Employee(int id, String name, String surname, int departmentId) {
+    public Employee(int id, String name, String surname, String departmentId) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.departmentId = departmentId;
-    }
-
-
-    public Employee(int parseInt, String s, String s1) {
-
     }
 
     public int getId() {
@@ -42,11 +37,11 @@ public class Employee {
         this.surname = surname;
     }
 
-    public int getDepartmentId() {
+    public String getDepartmentId() {
         return departmentId;
     }
 
-    public void setDepartmentId(int departmentId) {
+    public void setDepartmentId(String departmentId) {
         this.departmentId = departmentId;
     }
 
@@ -57,6 +52,6 @@ public class Employee {
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", departmentId=" + departmentId +
-                '}';
+                '}'+"\n";
     }
 }

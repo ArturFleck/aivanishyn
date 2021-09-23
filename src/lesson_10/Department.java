@@ -30,6 +30,6 @@ public class Department {
         return "Department{" +
                 "id=" + id +
                 ", department='" + department + '\'' +
-                '}';
+                '}'+"\n";
     }
 }
