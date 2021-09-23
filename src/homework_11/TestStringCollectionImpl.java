@@ -43,6 +43,7 @@ public class TestStringCollectionImpl {
         assert (c1.equals(c));
         assert (c1.add("ten"));
         assert (!c1.equals(c));
+
         System.out.println(c);
         System.out.println(c1);
 
