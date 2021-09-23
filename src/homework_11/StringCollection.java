@@ -11,7 +11,8 @@ public interface StringCollection {
 
     boolean contains(String str);
 
-    boolean equals(StringCollection collection);
+    //boolean equals(StringCollection collection);
+    public boolean equals(Object o);
 
     boolean clear();
 

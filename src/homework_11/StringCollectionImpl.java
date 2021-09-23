@@ -96,12 +96,6 @@ public class StringCollectionImpl implements StringCollection {
     }
 
     @Override
-    public boolean equals(StringCollection collection) {
-
-        return true;
-    }
-
-    @Override
     public boolean clear() {
         array = new String[0];
         return true;
@@ -112,6 +106,33 @@ public class StringCollectionImpl implements StringCollection {
         return this.array.length;
     }
 
+
+/*    @Override
+    public boolean equals(StringCollection collection) {
+
+        if(this == collection)
+            return true;
+        if(collection instanceof StringCollectionImpl){
+            return this.array.equals(((StringCollectionImpl) collection).array);
+        }
+        return true;
+    }*/
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof StringCollectionImpl)) return false;
+
+        StringCollectionImpl that = (StringCollectionImpl) o;
+
+        // Probably incorrect - comparing Object[] arrays with Arrays.equals
+        return Arrays.equals(array, that.array);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(array);
+    }
     @Override
     public String toString() {
         return "StringCollectionImpl{" +
