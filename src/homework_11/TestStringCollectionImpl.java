@@ -44,9 +44,6 @@ public class TestStringCollectionImpl {
         assert (c1.add("ten"));
         assert (!c1.equals(c));
 
-        System.out.println(c);
-        System.out.println(c1);
-
         // Check clear
         assert (c.clear());
         assert (!c.contains("Some value"));
