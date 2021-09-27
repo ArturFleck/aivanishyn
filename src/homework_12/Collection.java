@@ -37,5 +37,7 @@ class FirstLastList {
     }
 
 
+    //return (key == null) ? 0 : value;
+
 
 }
