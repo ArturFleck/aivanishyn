@@ -73,11 +73,7 @@ public class StringCollectionImpl implements StringCollection {
             this.array = newArr;
             y = true;
         }
-        if (y) {
-            return true;
-        } else {
-            return false;
-        }
+        return y;
     }
 
     @Override
@@ -95,6 +91,8 @@ public class StringCollectionImpl implements StringCollection {
         }
     }
 
+
+
     @Override
     public boolean clear() {
         array = new String[0];
@@ -109,6 +107,14 @@ public class StringCollectionImpl implements StringCollection {
 
 /*    @Override
     public boolean equals(StringCollection collection) {
+        if (collection == null) {
+            return false;
+        }
+        if (collection.getClass() != this.getClass()) {
+            return false;
+        }
+        if (!(collection instanceof StringCollectionImpl))
+            return false;
 
         if(this == collection)
             return true;

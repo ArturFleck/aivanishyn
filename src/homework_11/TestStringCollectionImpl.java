@@ -5,7 +5,6 @@ public class TestStringCollectionImpl {
     public static void main(String[] args) {
         checkOperations();
     }
-
     private static void checkOperations() {
         // Check create collection
         StringCollectionImpl c = new StringCollectionImpl();
@@ -14,7 +13,6 @@ public class TestStringCollectionImpl {
         // Check add elements
         assert (c.add("one"));
         assert (c.add("two"));
-        //System.out.println(c);
         assert (c.get(0).equals("one"));
         assert (c.get(1).equals("two"));
 

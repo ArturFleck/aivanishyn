@@ -1,11 +1,37 @@
 package homework_12;
 
 public class CustomCollectionImpl implements CustomCollection {
-    private String[] array = new String[0];
+
+    private Collection first;
+    private Collection last;
+
+    public boolean isEmpty() {
+        return first == null;
+    }
+
+    public void display() {
+        System.out.print("first>>>last: ");
+        Collection current = first;
+        while (current != null) {
+            current.disp();
+            current = current.next;
+        }
+        System.out.println();
+    }
+
 
     @Override
     public boolean add(String str) {
-        return false;
+        Collection newCollection = new Collection(str);
+        if (isEmpty()) {
+            first = newCollection;
+            //last = newCollection;
+        } else {
+            last.next = newCollection;
+            newCollection.previous = last;
+        }
+        last = newCollection;
+        return true;
     }
 
     @Override
@@ -30,22 +56,55 @@ public class CustomCollectionImpl implements CustomCollection {
 
     @Override
     public String get(int index) {
-        return null;
+        Collection current = first;
+        String data = null;
+        int counter = 1;
+        while (current != null) {
+            if (counter == index)
+                data = current.data;
+            counter++;
+            current = current.next;
+        }
+        return data;
     }
 
     @Override
     public boolean contains(String str) {
-        return false;
+        boolean answer = false;
+        if (isEmpty()) {
+            return false;
+        } else {
+            Collection current = first;
+            while (current != null) {
+                if (current.data == str) {
+                    answer = true;
+                }
+                current = current.next;
+            }
+        }
+        return answer;
     }
 
     @Override
     public boolean clear() {
-        return false;
+        first = null;
+        last = null;
+        return true;
     }
 
     @Override
-    public int size() {
-        return 0;
+    public void size() {
+        int counter = 0;
+        if (isEmpty()) {
+            counter = 0;
+        } else {
+            Collection current = first;
+            while (current != null) {
+                counter++;
+                current = current.next;
+            }
+        }
+        System.out.println("Elements in List is: " + counter);
     }
 
     @Override
@@ -57,4 +116,21 @@ public class CustomCollectionImpl implements CustomCollection {
     public boolean equals(Collection coll) {
         return false;
     }
+
+
+}
+
+class Collection {
+    public String data;
+    public Collection next;
+    public Collection previous;
+
+    public Collection(String str) {
+        data = str;
+    }
+
+    public void disp() {
+        System.out.print(data + " ");
+    }
+
 }

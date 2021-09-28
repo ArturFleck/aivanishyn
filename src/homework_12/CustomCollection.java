@@ -18,10 +18,11 @@ public interface CustomCollection {
 
     boolean clear();
 
-    int size();
+    void size();
 
     boolean trim();
 
     boolean equals(Collection coll);
 
+    void display();
 }
