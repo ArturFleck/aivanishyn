@@ -91,8 +91,6 @@ public class StringCollectionImpl implements StringCollection {
         }
     }
 
-
-
     @Override
     public boolean clear() {
         array = new String[0];
@@ -103,7 +101,6 @@ public class StringCollectionImpl implements StringCollection {
     public int size() {
         return this.array.length;
     }
-
 
 /*    @Override
     public boolean equals(StringCollection collection) {

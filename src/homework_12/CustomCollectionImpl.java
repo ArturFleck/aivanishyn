@@ -2,30 +2,51 @@ package homework_12;
 
 public class CustomCollectionImpl implements CustomCollection {
 
-    private Collection first;
-    private Collection last;
+    private Collection first;           // First element
+    private Collection last;            // Last element
 
     public boolean isEmpty() {
         return first == null;
-    }
+    }        // check if collection is empty
 
     public void display() {
-        System.out.print("first>>>last: ");
-        Collection current = first;
-        while (current != null) {
-            current.disp();
-            current = current.next;
+        System.out.print("first>>>last: ");         // Printing from first to last
+        Collection current = first;                 // taking first element
+        while (current != null) {                   // cycling till the end of the List
+            current.disp();                         // printing current element
+            current = current.next;                 // going to the next element
         }
-        System.out.println();
+        System.out.println();                       // edding new line
     }
 
+    public void deleteFirst() {
+        Collection temp = first;
 
-    @Override
+        if (first.next == null)
+            last = null;
+        else
+            first.next.previous = null;
+        first = first.next;
+    }
+
+    public void deleteLast() {
+        Collection temp = last;
+        if (first.next == null) // Если только один элемент
+            first = null; // first --> null
+        else
+            last.previous.next = null; // старое значение previous --> null
+        last = last.previous; // старое значение previous <-- last
+    }
+
+    public void deleteSomewhere(){
+
+    }
+
+    @Override                       // Each element is putting in the tail
     public boolean add(String str) {
         Collection newCollection = new Collection(str);
-        if (isEmpty()) {
+        if (isEmpty()) {        // checking if collection is empty
             first = newCollection;
-            //last = newCollection;
         } else {
             last.next = newCollection;
             newCollection.previous = last;
@@ -34,9 +55,19 @@ public class CustomCollectionImpl implements CustomCollection {
         return true;
     }
 
-    @Override
+    @Override                               // Each element putting in the tail
     public boolean addAll(String[] strArr) {
-        return false;
+        for (int i = 0; i < strArr.length; i++) {
+            Collection newCollection = new Collection(strArr[i]);
+            if (isEmpty()) {        // checking if collection is empty
+                first = newCollection;
+            } else {
+                last.next = newCollection;
+                newCollection.previous = last;
+            }
+            last = newCollection;
+        }
+        return true;
     }
 
     @Override
@@ -46,7 +77,33 @@ public class CustomCollectionImpl implements CustomCollection {
 
     @Override
     public boolean delete(int index) {
-        return false;
+        boolean flag = false;
+        if (isEmpty())
+            flag = false;
+        else {
+            Collection current = first;
+            String data = null;
+            int counter = 1;
+
+            if (index == 1) {
+                deleteFirst();
+                flag = true;
+            } else if (index == (size()+1)) {
+                flag = true;
+                deleteLast();
+            } else {
+                while (current != null) {
+                    if (counter == index) {
+                        current.previous.next = current.next;
+                        flag = true;
+                        break;
+                    }
+                    counter++;
+                    current = current.next;
+                }
+            }
+        }
+        return flag;
     }
 
     @Override
@@ -55,7 +112,7 @@ public class CustomCollectionImpl implements CustomCollection {
     }
 
     @Override
-    public String get(int index) {
+    public String get(int index) {      // Elements start from 1 !!!
         Collection current = first;
         String data = null;
         int counter = 1;
@@ -65,7 +122,10 @@ public class CustomCollectionImpl implements CustomCollection {
             counter++;
             current = current.next;
         }
-        return data;
+        if (data != null)
+            return data;
+        else
+            return "Element is not in the scope";
     }
 
     @Override
@@ -93,7 +153,7 @@ public class CustomCollectionImpl implements CustomCollection {
     }
 
     @Override
-    public void size() {
+    public int size() {
         int counter = 0;
         if (isEmpty()) {
             counter = 0;
@@ -104,7 +164,7 @@ public class CustomCollectionImpl implements CustomCollection {
                 current = current.next;
             }
         }
-        System.out.println("Elements in List is: " + counter);
+         return counter ;
     }
 
     @Override
@@ -132,5 +192,4 @@ class Collection {
     public void disp() {
         System.out.print(data + " ");
     }
-
 }

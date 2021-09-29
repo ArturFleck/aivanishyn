@@ -7,7 +7,7 @@ public class TestCollectionImpl {
     }
     private static void checkOperations(){
         CustomCollection c1 = new CustomCollectionImpl();
-        c1.add("first");
+/*        c1.add("first");
         c1.add("second");
         c1.add("third");
         c1.display();
@@ -25,6 +25,18 @@ public class TestCollectionImpl {
         c1.size();
         c1.display();
         System.out.println(c1.contains("friday"));
-        System.out.println(c1.get(3));
+        System.out.println(c1.get(3));*/
+        c1.clear();
+
+
+
+        c1.addAll(new String[]{"Some","Nice","TEXT","are","laying","in","HERE","!!!"});
+        c1.display();
+
+        CustomCollection c2=new CustomCollectionImpl();
+        CustomCollection c3=new CustomCollectionImpl();
+        c2.addAll(new String[]{"Some","Nice","TEXT","are","laying","in","HERE","!!!"});
+        c3.addAll(new String[]{"Give","Me","Back","My","Cookie"});
+        c2.addAll(c3);
     }
 }
