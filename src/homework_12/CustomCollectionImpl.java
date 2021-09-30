@@ -204,17 +204,17 @@ public class CustomCollectionImpl implements CustomCollection {
     @Override
     public boolean equals(CustomCollection coll) {
         boolean flag = false;
-        if (this.size()!=coll.size())
+        if (this.size()!=coll.size())   // first of all checking sizes
             flag=false;
-        else
+        else                            // if sizes are equals we are gonna check values
         {
             int counter =1;
             while (counter<=this.size()){
-                if (this.get(counter)==coll.get(counter))
+                if (this.get(counter)==coll.get(counter))   // if values are equals
                     flag=true;
                 else
                 {
-                    flag=false;
+                    flag=false; // if just only one value is not equal Objects are not equals
                     break;
                 }
                 counter++;
