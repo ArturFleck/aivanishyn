@@ -5,7 +5,8 @@ public class TestCollectionImpl {
     public static void main(String[] args) {
         checkOperations();
     }
-    private static void checkOperations(){
+
+    private static void checkOperations() {
         CustomCollection c1 = new CustomCollectionImpl();
         c1.add("first");
         c1.add("second");
@@ -67,12 +68,19 @@ public class TestCollectionImpl {
         System.out.println("----------------------------------------");
 
         System.out.println(c2.equals(c2));
-
         System.out.println("----------------------------------------");
         CustomCollection c4 = new CustomCollectionImpl();
-        c4.addAll(new String[]{"Some","Nice","TEXT","are","laying","In","HERE","!!!"}); // 'In' from big letter I
+        c4.addAll(new String[]{"Some", "Nice", "TEXT", "are", "laying", "In", "HERE", "!!!"}); // 'In' from big letter I
 
         System.out.println(c2.equals(c4));
 
+        System.out.println("----------------------------------------");
+
+        c4.display();
+        c4.trim(2, 2);
+        c4.display();
+
+        c4.trim(2, 3);
+        c4.display();
     }
 }

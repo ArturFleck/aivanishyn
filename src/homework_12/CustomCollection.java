@@ -20,7 +20,7 @@ public interface CustomCollection {
 
     int size();
 
-    boolean trim();
+    boolean trim(int a, int b);
 
     boolean equals(CustomCollection coll);
 

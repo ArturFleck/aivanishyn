@@ -197,24 +197,45 @@ public class CustomCollectionImpl implements CustomCollection {
     }
 
     @Override
-    public boolean trim() {
-        return false;
+    public boolean trim(int head, int tail) {
+        boolean flag = false;
+        int counter = head + tail;
+        if (this.size() > counter) {
+            while (head != 0) {
+                deleteFirst();
+                head--;
+            }
+            while (tail!=0)
+            {
+                deleteLast();
+                tail--;
+            }
+            flag = true;
+        }else if(this.size() == counter)
+        {
+            this.clear();
+            flag=true;
+        }
+        else   {
+            System.out.println("False! Values to trim is bigger than size of trimmed list");
+            flag=false;
+        }
+        return flag;
     }
 
     @Override
     public boolean equals(CustomCollection coll) {
         boolean flag = false;
-        if (this.size()!=coll.size())   // first of all checking sizes
-            flag=false;
+        if (this.size() != coll.size())   // first of all checking sizes
+            flag = false;
         else                            // if sizes are equals we are gonna check values
         {
-            int counter =1;
-            while (counter<=this.size()){
-                if (this.get(counter)==coll.get(counter))   // if values are equals
-                    flag=true;
-                else
-                {
-                    flag=false; // if just only one value is not equal Objects are not equals
+            int counter = 1;
+            while (counter <= this.size()) {
+                if (this.get(counter) == coll.get(counter))   // if values are equals
+                    flag = true;
+                else {
+                    flag = false; // if just only one value is not equal Objects are not equals
                     break;
                 }
                 counter++;
