@@ -1,5 +1,7 @@
 package homework_12;
 
+import java.util.Objects;
+
 public class CustomCollectionImpl implements CustomCollection {
 
     private Collection first;           // First element
@@ -20,8 +22,7 @@ public class CustomCollectionImpl implements CustomCollection {
     }
 
     public void deleteFirst() {
-        Collection temp = first;
-
+        //Collection temp = first;  // if i'm gonna return some value
         if (first.next == null)
             last = null;
         else
@@ -30,16 +31,12 @@ public class CustomCollectionImpl implements CustomCollection {
     }
 
     public void deleteLast() {
-        Collection temp = last;
-        if (first.next == null) // Если только один элемент
+        //Collection temp = last;  // if i'm gonna return some value
+        if (first.next == null)
             first = null; // first --> null
         else
-            last.previous.next = null; // старое значение previous --> null
-        last = last.previous; // старое значение previous <-- last
-    }
-
-    public void deleteSomewhere(){
-
+            last.previous.next = null;
+        last = last.previous;
     }
 
     @Override                       // Each element is putting in the tail
@@ -72,7 +69,19 @@ public class CustomCollectionImpl implements CustomCollection {
 
     @Override
     public boolean addAll(CustomCollection strColl) {
-        return false;
+        boolean flag = false;
+        if (strColl.size() == 0)
+            flag = false;
+        else {
+            int counter = 1;
+            int list = strColl.size();  // taking size of copying List
+            while (counter <= list) {
+                add(strColl.get(counter));  // taking each element into our list
+                counter++;
+            }
+            flag = true;
+        }
+        return flag;
     }
 
     @Override
@@ -82,18 +91,19 @@ public class CustomCollectionImpl implements CustomCollection {
             flag = false;
         else {
             Collection current = first;
-            String data = null;
+            //String data = null;  // if i'm gonna return some value
             int counter = 1;
 
             if (index == 1) {
                 deleteFirst();
                 flag = true;
-            } else if (index == (size()+1)) {
+            } else if (index == (size() + 1)) {
                 flag = true;
                 deleteLast();
             } else {
                 while (current != null) {
                     if (counter == index) {
+                        //data = current.data;  // if i'm gonna return some value
                         current.previous.next = current.next;
                         flag = true;
                         break;
@@ -108,7 +118,26 @@ public class CustomCollectionImpl implements CustomCollection {
 
     @Override
     public boolean delete(String str) {
-        return false;
+        boolean flag = false;
+        if (isEmpty())
+            flag = false;
+        else {
+            Collection current = first;
+            int counter = 1;
+            int index = 0;
+            while (current != null) {
+                if (Objects.equals(current.data, str)) {
+                    index = counter;
+                    break;
+                }
+                counter++;
+                current = current.next;
+            }
+
+            delete(index);
+            flag = true;
+        }
+        return flag;
     }
 
     @Override
@@ -164,7 +193,7 @@ public class CustomCollectionImpl implements CustomCollection {
                 current = current.next;
             }
         }
-         return counter ;
+        return counter;
     }
 
     @Override
@@ -193,3 +222,4 @@ class Collection {
         System.out.print(data + " ");
     }
 }
+//----------------------------------------------
