@@ -64,6 +64,15 @@ public class TestCollectionImpl {
         System.out.println(c2.size());
         c2.display();
 
+        System.out.println("----------------------------------------");
+
+        System.out.println(c2.equals(c2));
+
+        System.out.println("----------------------------------------");
+        CustomCollection c4 = new CustomCollectionImpl();
+        c4.addAll(new String[]{"Some","Nice","TEXT","are","laying","In","HERE","!!!"}); // 'In' from big letter I
+
+        System.out.println(c2.equals(c4));
 
     }
 }

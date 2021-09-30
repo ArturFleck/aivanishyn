@@ -22,7 +22,7 @@ public interface CustomCollection {
 
     boolean trim();
 
-    boolean equals(Collection coll);
+    boolean equals(CustomCollection coll);
 
     void display();
 

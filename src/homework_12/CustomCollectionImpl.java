@@ -202,11 +202,26 @@ public class CustomCollectionImpl implements CustomCollection {
     }
 
     @Override
-    public boolean equals(Collection coll) {
-        return false;
+    public boolean equals(CustomCollection coll) {
+        boolean flag = false;
+        if (this.size()!=coll.size())
+            flag=false;
+        else
+        {
+            int counter =1;
+            while (counter<=this.size()){
+                if (this.get(counter)==coll.get(counter))
+                    flag=true;
+                else
+                {
+                    flag=false;
+                    break;
+                }
+                counter++;
+            }
+        }
+        return flag;
     }
-
-
 }
 
 class Collection {
