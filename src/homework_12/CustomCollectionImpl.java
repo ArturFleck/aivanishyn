@@ -7,7 +7,7 @@ public class CustomCollectionImpl implements CustomCollection {
     private Collection first;           // First element
     private Collection last;            // Last element
 
-    public boolean isEmpty() {
+    private boolean isEmpty() {
         return first == null;
     }        // check if collection is empty
 
@@ -21,7 +21,7 @@ public class CustomCollectionImpl implements CustomCollection {
         System.out.println();                       // edding new line
     }
 
-    public void deleteFirst() {
+    private void deleteFirst() {
         //Collection temp = first;  // if i'm gonna return some value
         if (first.next == null)
             last = null;
@@ -30,7 +30,7 @@ public class CustomCollectionImpl implements CustomCollection {
         first = first.next;
     }
 
-    public void deleteLast() {
+    private void deleteLast() {
         //Collection temp = last;  // if i'm gonna return some value
         if (first.next == null)
             first = null; // first --> null
