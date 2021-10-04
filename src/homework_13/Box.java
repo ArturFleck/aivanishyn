@@ -2,14 +2,14 @@ package homework_13;
 
 public class Box {
 
-    protected int ID;
+    protected int id;
     protected int length;
     protected int width;
     protected int depth;
     protected int weight;
 
-    public Box(int ID, int length, int width, int depth, int weight) {
-        this.ID = ID;
+    public Box(int id, int length, int width, int depth, int weight) {
+        this.id = id;
         this.length = length;
         this.width = width;
         this.depth = depth;
@@ -40,7 +40,7 @@ public class Box {
         }
 
         return "Box{" +
-                "ID=" + ID +
+                "id=" + id +
                 ",\t\tlength=" + length + "," + tab1 +
                 "\t\twidth=" + width + "," + tab2 +
                 "\t\tdepth=" + depth + "," + tab3 +

@@ -9,7 +9,7 @@ public class Task_1 {
     public static void main(String[] args) {
         List<Integer> arr = new ArrayList<>();
         List<Integer> arr2 = new LinkedList<>();
-        int size = 1000000;
+        int size = 1_000_000;
 
         long start = 0L;
         long end = 0L;
@@ -44,7 +44,7 @@ public class Task_1 {
 
     public static void getFromArray(List<Integer> arr) {
         Random rand = new Random();
-        for (int i = 0; i < 100000; i++) {
+        for (int i = 0; i < 100_000; i++) {
             System.out.print(arr.get(rand.nextInt(arr.size())) + " ");
         }
 /*        for (Integer integer : arr) {
