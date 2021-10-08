@@ -14,27 +14,66 @@ public class LoginUnit {
         loginData.put("ArturFleck", "_arturfleck");
         loginData.put("JohnDou", "123asdqwe");
         loginData.put("SunnyDayDream", "SunriceAvenue");
-        loginData.put("Logan", "asdqdddas");
+        loginData.put("Logan", "doDO_San");
     }
 
-    static boolean isUserAuthentic(String login, String password, String confirmPassword) {
+    static boolean isUserAuthentic(String login, String password, String confirmPassword) throws RuntimeException {
         boolean check = true;
-
-        isLoginValid(login);
-        isPasswordValid(password);
-        if (passCheck == password){
-            check= false;
+        if (password != confirmPassword) {      // first of all we need to check if password and confirmPassword are matches
+            throw new RuntimeException("Password and ConfirmPassword not match");   // if they not match we gonna throw some extension
+        }
+        try {
+            isLoginValid(login);
+            isPasswordValid(password);
+        } catch (WrongLoginException | WrongPasswordException ex) {
+            System.out.println("Something is wrong. " + ex.getMessage());
+            check = false;
         }
         return check;
     }
 
-    private static void isLoginValid(String login) {
-        //System.out.println(loginData.containsKey(login));
+    private static void isLoginValid(String login) throws WrongLoginException {
+        if (login.length() > 20)
+            throw new WrongLoginException("Login is too long.");
+        if (!login.matches("^[a-zA-Z0-9_]+$"))
+            throw new WrongLoginException("Login consist wrong characters.");
+        if (!loginData.containsKey(login))
+            throw new WrongLoginException("User not exist");
+
         passCheck = loginData.get(login);
-
+        //System.out.println(loginData.containsKey(login));
     }
 
-    private static void isPasswordValid(String password) {
-        System.out.println(loginData.containsValue(password));
+    private static void isPasswordValid(String password) throws WrongPasswordException {
+        if (password.length() > 20 || password.length() == 0)
+            throw new WrongPasswordException("Wrong length of password.");
+        if (!password.matches("^[a-zA-Z0-9_]+$"))
+            throw new WrongPasswordException("Password contains wrong characters.");
+        if (passCheck != password)
+            throw new WrongPasswordException("Invalid password.");
+        //System.out.println(loginData.containsValue(password));
     }
+
+    static class WrongLoginException extends RuntimeException {
+        // Parameterless Constructor
+        public WrongLoginException() {
+        }
+
+        // Constructor that accepts a message
+        public WrongLoginException(String message) {
+            super(message);
+        }
+    }
+
+    static class WrongPasswordException extends RuntimeException {
+        // Parameterless Constructor
+        public WrongPasswordException() {
+        }
+
+        // Constructor that accepts a message
+        public WrongPasswordException(String message) {
+            super(message);
+        }
+    }
+
 }

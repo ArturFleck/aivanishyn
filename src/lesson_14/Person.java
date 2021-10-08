@@ -1,6 +1,6 @@
 package lesson_14;
 
-import lombok.*;
+/*import lombok.*;
 
 @EqualsAndHashCode
 @NoArgsConstructor
@@ -14,4 +14,4 @@ public class Person {
     private String name;
     private String email;
 
-}
+}*/
