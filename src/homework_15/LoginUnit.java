@@ -37,10 +37,10 @@ public class LoginUnit {
             throw new WrongLoginException("Login is too long.");
         if (!login.matches("^[a-zA-Z0-9_]+$"))
             throw new WrongLoginException("Login consist wrong characters.");
-        if (!loginData.containsKey(login))
+        if (!loginData.containsKey(login))  // if user not exist in our base
             throw new WrongLoginException("User not exist");
 
-        passCheck = loginData.get(login);
+        passCheck = loginData.get(login);   // if user exist in base we take his value of password and throw it to isPasswordValid
         //System.out.println(loginData.containsKey(login));
     }
 
@@ -49,7 +49,7 @@ public class LoginUnit {
             throw new WrongPasswordException("Wrong length of password.");
         if (!password.matches("^[a-zA-Z0-9_]+$"))
             throw new WrongPasswordException("Password contains wrong characters.");
-        if (passCheck != password)
+        if (passCheck != password)      // if taken value that came from isLoginValid is not equals what user input
             throw new WrongPasswordException("Invalid password.");
         //System.out.println(loginData.containsValue(password));
     }
