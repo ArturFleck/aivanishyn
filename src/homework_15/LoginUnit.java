@@ -17,7 +17,7 @@ public class LoginUnit {
         loginData.put("Logan", "doDO_San");
     }
 
-    static boolean isUserAuthentic(String login, String password, String confirmPassword) throws RuntimeException {
+    static boolean isUserAuthentic(String login, String password, String confirmPassword) {
         boolean check = true;
         if (password != confirmPassword) {      // first of all we need to check if password and confirmPassword are matches
             throw new RuntimeException("Password and ConfirmPassword not match");   // if they not match we gonna throw some extension
@@ -49,7 +49,7 @@ public class LoginUnit {
             throw new WrongPasswordException("Wrong length of password.");
         if (!password.matches("^[a-zA-Z0-9_]+$"))
             throw new WrongPasswordException("Password contains wrong characters.");
-        if (passCheck != password)      // if taken value that came from isLoginValid is not equals what user input
+        if (passCheck.equals(password))      // if taken value that came from isLoginValid is not equals what user input
             throw new WrongPasswordException("Invalid password.");
         //System.out.println(loginData.containsValue(password));
     }
