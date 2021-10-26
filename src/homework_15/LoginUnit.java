@@ -20,7 +20,7 @@ public class LoginUnit {
     static boolean isUserAuthentic(String login, String password, String confirmPassword) {
         boolean check = true;
         if (password.equals(confirmPassword)) {      // first of all we need to check if password and confirmPassword are matches
-            throw new RuntimeException("Password and ConfirmPassword not match");   // if they not match we gonna throw some extension
+            throw new RuntimeException("Password and Confirm Password not match");   // if they not match we gonna throw some extension
         }
         try {
             isLoginValid(login);

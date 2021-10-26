@@ -1,8 +1,18 @@
+import java.util.Random;
+
 public class ArturIvanishyn {
 
     public static void main(String[] args) {
 
-        long start = 0L;
+        Random rand = new Random();
+        for (int i =0; i<10;i++){
+            if (rand.nextBoolean())
+                System.out.println("true");
+            else
+                System.out.println("false");
+        }
+
+        /*long start = 0L;
         long end = 0L;
 
         start = System.currentTimeMillis();
@@ -52,7 +62,7 @@ public class ArturIvanishyn {
             }
             number /= 10;
         }
-        return sum;
+        return sum;*/
     }
 }
 
