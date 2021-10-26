@@ -10,6 +10,6 @@ public class threads {
     putMoney.start();
     takeMoney.start();
 
-
+    System.out.println(account.getCount());
     }
 }
