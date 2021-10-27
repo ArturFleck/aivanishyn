@@ -23,6 +23,7 @@ public class TestThreads {
                 }
             }
         };
+
         Runnable task2 = () -> {
             for (int i = 0; i < cycle; i++) {
                 if (rand.nextBoolean()) {
@@ -52,7 +53,7 @@ public class TestThreads {
         tread1.join();
         tread2.join();
 
-        System.out.println("Value in account after end: " + account.getCount());
+        System.out.println("Value in account after finish: " + account.getCount());
     }
 
 }
