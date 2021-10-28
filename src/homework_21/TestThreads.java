@@ -4,7 +4,6 @@ import java.util.Random;
 
 public class TestThreads {
     public static void main(String[] args) throws InterruptedException {
-        Random rand = new Random();
         Account account = new Account();
         int cycle = 20;         // how many cycles we want for each thread ?
         int boundary = 100;     // max value for +/-
