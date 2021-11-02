@@ -1,35 +1,46 @@
 package homework_21_2;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Account {
-    Random rand = new Random();
-    private int count = rand.nextInt(999);
+
+
+    private int flag = 0;
+    private int count;
+
+    Account(int balance) {
+        this.count = balance;
+    }
 
     public synchronized void replenishment(int amount) {
-        count += amount;
         System.out.println("Balance:" + getCount() + "  " + Thread.currentThread().getName() + " (+): " + amount);
+        count += amount;
+        notify();
     }
 
     public synchronized void withdrawal(int amount) {
-        if (count >= amount)
+        if (count >= amount) {
+            System.out.println("Balance:" + getCount() + "  " + Thread.currentThread().getName() + " (-): " + amount);
             count -= amount;
-        else {
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Balance:" + getCount() + "  " + Thread.currentThread().getName() + " trying to get " + amount);
-            System.out.print("Please enter the value you wanted to get: ");
-            amount = sc.nextInt();
-            if (amount > count) {
-                amount = 0;
+        } else {
+            System.out.println("Balance:" + getCount() + "  " + Thread.currentThread().getName() + " (-): " + amount + "   WAIT...");
+            try {
+                wait();
+                if (flag >= 2) {
+                    Scanner sc = new Scanner(System.in);
+                    System.out.print("Manager Replenishment balance: ");
+                    amount = sc.nextInt();
+                    count += amount;
+                    flag = -1;
+                    notifyAll();
+                }
+                flag++;
+            } catch (InterruptedException e) {
             }
-            count -= amount;
         }
-        System.out.println("Balance:" + getCount() + "  " + Thread.currentThread().getName() + " (-): " + amount);
     }
 
     public synchronized int getCount() {
         return count;
     }
-
 }

@@ -4,10 +4,11 @@ import java.util.Random;
 
 public class TestThreads {
     public static void main(String[] args) throws InterruptedException {
-        Account account = new Account();
+        Random rand = new Random();
+        Account account = new Account(rand.nextInt(999));
         int cycle = 20;         // how many cycles we want for each thread ?
         int maxGet = 100;     // max value for -
-        int maxPut = 100;     // max value for +
+        int maxPut = 50;     // max value for +
 
         Runnable task1 = () -> fill(account, cycle, maxGet, maxPut);
         Runnable task2 = () -> fill(account, cycle, maxGet, maxPut);
