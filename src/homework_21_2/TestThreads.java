@@ -1,26 +1,29 @@
 package homework_21_2;
 
+import java.util.Objects;
 import java.util.Random;
-import java.util.Scanner;
 
 public class TestThreads {
     public static void main(String[] args) throws InterruptedException {
         Random rand = new Random();
-        Account account = new Account(rand.nextInt(100));
+        Account account = new Account(rand.nextInt(1000));
         int cycle = 20;         // how many cycles we want for each thread ?
-        int maxGet = 100;     // max value for -
+        int maxGet = 200;     // max value for -
         int maxPut = 50;     // max value for +
 
         Runnable task1 = () -> fill(account, cycle, maxGet, maxPut);
         Runnable task2 = () -> fill(account, cycle, maxGet, maxPut);
-        Runnable manager = () -> {
+        Runnable manage = () -> {
             while (true) {
-                if (account.flag > 1)
-                    System.out.println("manager");
-                Manager.fill();
-                account.flag=0;
-                Account.class.notifyAll();
-                //Thread.sleep(300);
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {}
+                if (account.flag1 && account.flag2) {
+                    if (account.fl1&&account.fl2){
+                        break;
+                    }
+                    Manager.put(account);
+                }
             }
         };
 
@@ -28,7 +31,7 @@ public class TestThreads {
 
         Thread thread1 = new Thread(task1);
         Thread thread2 = new Thread(task2);
-        Thread thread3 = new Thread(manager);
+        Thread thread3 = new Thread(manage);
 
         thread1.setName("TH-1");
         thread2.setName("TH-2");
@@ -42,6 +45,7 @@ public class TestThreads {
         thread2.join();
 
         System.out.println("Value in account after finish: " + account.getCount());
+
     }
 
     public static void fill(Account account, int cycle, int maxGet, int maxPut) {
@@ -54,6 +58,14 @@ public class TestThreads {
                 Thread.yield();
             }
         }
-    }
 
+        if (Objects.equals(Thread.currentThread().getName(), "TH-1")){
+            account.flag1=true;
+            account.fl1=true;
+        }
+        if (Objects.equals(Thread.currentThread().getName(), "TH-2")){
+            account.flag2=true;
+            account.fl2=true;
+        }
+    }
 }

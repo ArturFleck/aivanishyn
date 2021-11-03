@@ -1,10 +1,10 @@
 package homework_21_2;
 
-import java.util.Scanner;
-
 public class Account {
 
-    public int flag = 0;
+    public boolean flag1, flag2;
+    boolean fl1 = false;
+    boolean fl2 = false;
     private int count;
 
     Account(int balance) {
@@ -15,7 +15,6 @@ public class Account {
         System.out.println("Balance:" + getCount() + "  " + Thread.currentThread().getName() + " (+): " + amount);
         count += amount;
         notify();
-        flag=0;
     }
 
     public synchronized void withdrawal(int amount) {
@@ -24,19 +23,35 @@ public class Account {
             count -= amount;
         } else {
             System.out.println("Balance:" + getCount() + "  " + Thread.currentThread().getName() + " (-): " + amount + "   WAIT...");
-
-            try {
-                flag++;
-                wait();
-                System.out.println(Thread.currentThread().getName() +"  " + Thread.currentThread().getState());
-            } catch (InterruptedException e) {
-
+            if (Thread.currentThread().getName() == "TH-1") {
+                while (amount > count) {
+                    try {
+                        flag1 = true;
+                        wait();
+                    } catch (InterruptedException e) {
+                    }
+                }
+                System.out.println("Balance:" + getCount() + "  " + Thread.currentThread().getName() + " (-): " + amount);
+                count -= amount;
+                flag1 = false;
+            }
+            if (Thread.currentThread().getName() == "TH-2") {
+                while (amount > count) {
+                    try {
+                        flag2 = true;
+                        wait();
+                    } catch (InterruptedException e) {
+                    }
+                }
+                System.out.println("Balance:" + getCount() + "  " + Thread.currentThread().getName() + " (-): " + amount);
+                count -= amount;
+                flag2 = false;
             }
         }
-
     }
 
     public synchronized int getCount() {
         return count;
     }
+
 }
