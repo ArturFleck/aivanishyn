@@ -6,9 +6,8 @@ public class Manager {
 
     public static void put(Account acc) {
         Scanner sc = new Scanner(System.in);
-        System.out.print(">> Muster please enter value: ");
+        System.out.print(">> Master, please enter the value of replenishment: ");
         int amount = sc.nextInt();
         acc.replenishment(amount);
-        System.out.println("Balance after Managing: " + acc.getCount());
     }
 }

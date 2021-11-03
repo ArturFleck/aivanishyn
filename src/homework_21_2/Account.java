@@ -1,10 +1,13 @@
 package homework_21_2;
 
+import java.util.Objects;
+
 public class Account {
 
-    public boolean flag1, flag2;
-    boolean fl1 = false;
-    boolean fl2 = false;
+    public boolean fl1 = false; // flag of ending first thread
+    public boolean fl2 = false; // flag of ending second thread
+    public boolean flag1, flag2;    // flags of waiting
+
     private int count;
 
     Account(int balance) {
@@ -23,24 +26,26 @@ public class Account {
             count -= amount;
         } else {
             System.out.println("Balance:" + getCount() + "  " + Thread.currentThread().getName() + " (-): " + amount + "   WAIT...");
-            if (Thread.currentThread().getName() == "TH-1") {
-                while (amount > count) {
+
+            if (Objects.equals(Thread.currentThread().getName(), "TH-1")) {
+                while (amount > count) {    // waiting while balance will be more than amount of withdrawal
                     try {
                         flag1 = true;
                         wait();
-                    } catch (InterruptedException e) {
+                    } catch (InterruptedException ignored) {
                     }
                 }
                 System.out.println("Balance:" + getCount() + "  " + Thread.currentThread().getName() + " (-): " + amount);
                 count -= amount;
                 flag1 = false;
             }
-            if (Thread.currentThread().getName() == "TH-2") {
-                while (amount > count) {
+
+            if (Objects.equals(Thread.currentThread().getName(), "TH-2")) {
+                while (amount > count) {    // waiting while balance will be more than amount of withdrawal
                     try {
                         flag2 = true;
                         wait();
-                    } catch (InterruptedException e) {
+                    } catch (InterruptedException ignored) {
                     }
                 }
                 System.out.println("Balance:" + getCount() + "  " + Thread.currentThread().getName() + " (-): " + amount);
@@ -53,5 +58,4 @@ public class Account {
     public synchronized int getCount() {
         return count;
     }
-
 }

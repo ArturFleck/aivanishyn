@@ -7,7 +7,7 @@ public class TestThreads {
     public static void main(String[] args) throws InterruptedException {
         Random rand = new Random();
         Account account = new Account(rand.nextInt(1000));
-        int cycle = 20;         // how many cycles we want for each thread ?
+        int cycle = 10;         // how many cycles we want for each thread ?
         int maxGet = 200;     // max value for -
         int maxPut = 50;     // max value for +
 
@@ -16,10 +16,11 @@ public class TestThreads {
         Runnable manage = () -> {
             while (true) {
                 try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {}
+                    Thread.sleep(1500);
+                } catch (InterruptedException ignored) {
+                }
                 if (account.flag1 && account.flag2) {
-                    if (account.fl1&&account.fl2){
+                    if (account.fl1 && account.fl2) {
                         break;
                     }
                     Manager.put(account);
@@ -59,13 +60,15 @@ public class TestThreads {
             }
         }
 
-        if (Objects.equals(Thread.currentThread().getName(), "TH-1")){
-            account.flag1=true;
-            account.fl1=true;
+        if (Objects.equals(Thread.currentThread().getName(), "TH-1")) {  // when Tread is end
+            account.flag1 = true;
+            account.fl1 = true;
+            System.out.println("<--->  " + Thread.currentThread().getName() + "  end his work");
         }
-        if (Objects.equals(Thread.currentThread().getName(), "TH-2")){
-            account.flag2=true;
-            account.fl2=true;
+        if (Objects.equals(Thread.currentThread().getName(), "TH-2")) {  // when Tread is end
+            account.flag2 = true;
+            account.fl2 = true;
+            System.out.println("<--->  " + Thread.currentThread().getName() + "  end his work");
         }
     }
 }
