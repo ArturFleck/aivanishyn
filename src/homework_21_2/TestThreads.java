@@ -8,15 +8,15 @@ public class TestThreads {
         Random rand = new Random();
         Account account = new Account(rand.nextInt(1000));
         int cycle = 10;         // how many cycles we want for each thread ?
-        int maxGet = 200;     // max value for -
-        int maxPut = 50;     // max value for +
+        int maxGet = 300;     // max value for -
+        int maxPut = 150;     // max value for +
 
         Runnable task1 = () -> fill(account, cycle, maxGet, maxPut);
         Runnable task2 = () -> fill(account, cycle, maxGet, maxPut);
         Runnable manage = () -> {
             while (true) {
                 try {
-                    Thread.sleep(1500);
+                    Thread.sleep(2000);
                 } catch (InterruptedException ignored) {
                 }
                 if (account.flag1 && account.flag2) {

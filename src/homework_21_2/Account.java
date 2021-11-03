@@ -27,33 +27,57 @@ public class Account {
         } else {
             System.out.println("Balance:" + getCount() + "  " + Thread.currentThread().getName() + " (-): " + amount + "   WAIT...");
 
-            if (Objects.equals(Thread.currentThread().getName(), "TH-1")) {
-                while (amount > count) {    // waiting while balance will be more than amount of withdrawal
-                    try {
+            while (amount > count) {    // waiting while balance will be more than amount of withdrawal, rewritten piece of code block
+                try {
+                    if (Objects.equals(Thread.currentThread().getName(), "TH-1")) {
                         flag1 = true;
-                        wait();
-                    } catch (InterruptedException ignored) {
                     }
+                    if (Objects.equals(Thread.currentThread().getName(), "TH-2")) {
+                        flag2 = true;
+                    }
+                    wait();
+                } catch (InterruptedException ignored) {
                 }
-                System.out.println("Balance:" + getCount() + "  " + Thread.currentThread().getName() + " (-): " + amount);
-                count -= amount;
+            }
+            System.out.println("Balance:" + getCount() + "  " + Thread.currentThread().getName() + " (-): " + amount);
+            count -= amount;
+            if (Objects.equals(Thread.currentThread().getName(), "TH-1")) {
                 flag1 = false;
             }
-
             if (Objects.equals(Thread.currentThread().getName(), "TH-2")) {
-                while (amount > count) {    // waiting while balance will be more than amount of withdrawal
-                    try {
-                        flag2 = true;
-                        wait();
-                    } catch (InterruptedException ignored) {
-                    }
-                }
-                System.out.println("Balance:" + getCount() + "  " + Thread.currentThread().getName() + " (-): " + amount);
-                count -= amount;
                 flag2 = false;
             }
         }
-    }
+/*          // SCRATCH for upper piece of code block, don't know if i'm gonna use it
+
+        if (Objects.equals(Thread.currentThread().getName(), "TH-1")) {
+            while (amount > count) {    // waiting while balance will be more than amount of withdrawal
+                try {
+                    flag1 = true;
+                    wait();
+                } catch (InterruptedException ignored) {
+                }
+            }
+            System.out.println("Balance:" + getCount() + "  " + Thread.currentThread().getName() + " (-): " + amount);
+            count -= amount;
+            flag1 = false;
+        }
+
+        if (Objects.equals(Thread.currentThread().getName(), "TH-2")) {
+            while (amount > count) {    // waiting while balance will be more than amount of withdrawal
+                try {
+                    flag2 = true;
+                    wait();
+                } catch (InterruptedException ignored) {
+                }
+            }
+            System.out.println("Balance:" + getCount() + "  " + Thread.currentThread().getName() + " (-): " + amount);
+            count -= amount;
+            flag2 = false;
+        }
+    }*/
+
+}
 
     public synchronized int getCount() {
         return count;
