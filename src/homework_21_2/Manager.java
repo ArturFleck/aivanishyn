@@ -4,10 +4,13 @@ import java.util.Scanner;
 
 public class Manager {
 
-    /*Scanner sc = new Scanner(System.in);
+    public static void fill() {
 
-    System.out.print("Replenishment balance: ");
-    amount = sc.nextInt();
-    count += amount;*/
-
+        Account acc = new Account(0);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter value: ");
+        int amount = sc.nextInt();
+        acc.replenishment(amount);
+        System.out.print("Replenishment balance: " + amount);
+    }
 }
