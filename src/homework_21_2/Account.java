@@ -39,7 +39,7 @@ public class Account {
                 } catch (InterruptedException ignored) {
                 }
             }
-            System.out.println("Balance:" + getCount() + "  " + Thread.currentThread().getName() + " (-): " + amount);
+            System.out.println("Balance:" + getCount() + "  " + Thread.currentThread().getName() + " (-): " + amount + "   TAKE IT...");
             count -= amount;
             if (Objects.equals(Thread.currentThread().getName(), "TH-1")) {
                 flag1 = false;
