@@ -7,15 +7,16 @@
 	<session-factory>
 		<property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-		<property name="connection.url">jdbc:mysql://localhost:3306/university?serverTimezone=UTC</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/test?serverTimezone=UTC</property><!--
+		<property name="connection.url">jdbc:mysql://localhost:3306/university?serverTimezone=UTC</property>-->
 		<property name="connection.username">root</property>
 		<property name="connection.password">root</property>
 
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
 
-<!--		<property name="connection.autocommit">true</property>-->
-		<!--<property name="hbm2ddl.auto">update</property>-->
+		<!--<property name="connection.autocommit">true</property>-->
+		<property name="hbm2ddl.auto">create</property>
 
 <!--		create :- create the schema, the data previously present (if there) in the schema is lost-->
 <!--		update:- update the schema with the given values.-->
@@ -26,7 +27,7 @@
 		<property name="connection.pool_size">1</property>
 		<property name="current_session_context_class">thread</property>
 
-		<mapping class="com.projects.example.hibernate.base.entity.User"/>
-		<mapping class="com.projects.example.hibernate.base.entity.Address"/>
+		<mapping class="com.hw30.entity.Student"/>
+		<mapping class="com.hw30.entity.StudyGroup"/>
 	</session-factory>
 </hibernate-configuration>
