@@ -33,6 +33,4 @@ public class Student {
     @Column(name = "yearOfAdmission")
     private Integer yearOfAdmission;
 
-    @ManyToOne
-    private StudyGroup studyGroup;
 }
