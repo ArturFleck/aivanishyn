@@ -2,33 +2,33 @@ package com.hw30.DAO;
 
 import com.hw30.HibernateUtil;
 import com.hw30.entity.Student;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
-import java.sql.ResultSet;
 import java.util.List;
 
 public class StudentDAO {
     //public Student get(Integer id){}
 
-    public Student ooo (Student student){
+    //public Student saveOrUpdate (Student student){}
+
+    public List<Student> getAll() {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        ResultSet rs = (ResultSet) session.createQuery("select * from student");
         session.beginTransaction();
 
-        session.saveOrUpdate(student);
-        System.out.println(rs);
-        /*String fName = student.getFirstName();
-        String lName = student.getLastName();
-
-        rs = session.createQuery("SELECT a FROM Student");
-        session.save(student);*/
+        List<Student> list = null;
+        Query query = session.createQuery("FROM student");
+        list = (List<Student>) query.list();
         session.getTransaction().commit();
+
+        //if (list != null && !list.isEmpty()) {
+            for (Student st : list)
+                System.out.println(st);
+        //}
+
         HibernateUtil.shutdown();
         return null;
     }
-
-
-    //public List<Student> getAll(){}
 
     //public List<Student> findByNameContaining(String partOfFullName){}
 

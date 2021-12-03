@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "student",uniqueConstraints = {
-        @UniqueConstraint(columnNames = "ID")})
+        @UniqueConstraint(columnNames = "id")})
 @Setter
 @Getter
 @ToString
@@ -32,5 +32,4 @@ public class Student {
 
     @Column(name = "yearOfAdmission")
     private Integer yearOfAdmission;
-
 }

@@ -6,38 +6,43 @@ import com.hw30.entity.Student;
 import com.hw30.entity.StudyGroup;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
+import javax.security.auth.login.Configuration;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
+/*        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();*/
 
-        StudentDAO studentDAO = new StudentDAO();
-        StudyGroupDAO studyGroupDAO = new StudyGroupDAO();
-
-        StudyGroup sg = new StudyGroup();
-        sg.setGroupName("AI-108");
+/*      StudyGroup sg = new StudyGroup();
+        sg.setGroupName("AA-128");
+        session.save(sg);
 
         Student st = new Student();
-        st.setFirstName("Chad")
-                .setLastName("Gray")
+        st.setFirstName("Christopher")
+                .setLastName("Nolan")
                 .setGroupId(3)
-                .setYearOfAdmission(2010);
-
-        //session.save(sg);
-        //session.save(st);
-
-
-
-        Query query = session.createQuery("FROM student where id=2");
-        List list = query.list();
-
-        System.out.println(list);
+                .setYearOfAdmission(2012);
+        session.save(st);
 
         session.getTransaction().commit();
-        HibernateUtil.shutdown();
+        */
+
+/*        Query query = session.createQuery("FROM student");
+        List<Student> list = (List<Student>) query.list();
+        session.getTransaction().commit();
+        session.close();
+
+        for (Student st1 : list) {
+            System.out.println(st1);
+        }*/
+
+        //HibernateUtil.shutdown();
+        StudentDAO studentDAO = new StudentDAO();
+        studentDAO.getAll();
+
     }
 }

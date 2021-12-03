@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Entity
     @Table(name = "studyGroup",uniqueConstraints = {
-            @UniqueConstraint(columnNames = "ID")})
+            @UniqueConstraint(columnNames = "id")})
     @Setter
     @Getter
     @ToString
@@ -29,6 +29,5 @@ import java.util.Set;
         @OneToMany(cascade=CascadeType.ALL)
         @JoinColumn(name = "groupId")
         private Set<Student> students;
-
     }
 
