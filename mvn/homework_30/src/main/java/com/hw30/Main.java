@@ -14,10 +14,10 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        /*Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-/*      StudyGroup sg = new StudyGroup();
+*//*      StudyGroup sg = new StudyGroup();
         sg.setGroupName("AA-128");
         session.save(sg);
 
@@ -29,19 +29,8 @@ public class Main {
         session.save(st);
 
         session.getTransaction().commit();
-        */
-
-        // DOESN'T WORK HERE
-        Query query = session.createQuery("FROM student");
-        List<Student> list = (List<Student>) query.list();
-        session.getTransaction().commit();
-        session.close();
-
-        for (Student st1 : list) {
-            System.out.println(st1);
-        }
-
-        HibernateUtil.shutdown();
+        *//*
+        HibernateUtil.shutdown();*/
 
         // AND HERE
         StudentDAO studentDAO = new StudentDAO();

@@ -15,10 +15,10 @@ public class StudentDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-        List<Student> list = null;
-        Query query = session.createQuery("FROM student");
-        list = (List<Student>) query.list();
+        Query query = session.createQuery("FROM Student");
+        List<Student> list = (List<Student>) query.list();
         session.getTransaction().commit();
+        session.close();
 
         //if (list != null && !list.isEmpty()) {
             for (Student st : list)
@@ -26,7 +26,7 @@ public class StudentDAO {
         //}
 
         HibernateUtil.shutdown();
-        return list;
+        return null;
     }
 
     //public List<Student> findByNameContaining(String partOfFullName){}
