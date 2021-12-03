@@ -26,7 +26,7 @@ public class StudentDAO {
         //}
 
         HibernateUtil.shutdown();
-        return null;
+        return list;
     }
 
     //public List<Student> findByNameContaining(String partOfFullName){}
