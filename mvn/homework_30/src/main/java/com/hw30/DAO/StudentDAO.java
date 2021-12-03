@@ -9,7 +9,6 @@ import java.util.List;
 
 public class StudentDAO {
     //public Student get(Integer id){}
-
     //public Student saveOrUpdate (Student student){}
 
     public List<Student> getAll() {
@@ -31,5 +30,4 @@ public class StudentDAO {
     }
 
     //public List<Student> findByNameContaining(String partOfFullName){}
-
 }
