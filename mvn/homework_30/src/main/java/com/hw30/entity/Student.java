@@ -8,7 +8,7 @@ import lombok.experimental.Accessors;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "student",uniqueConstraints = {
+@Table(name = "student", uniqueConstraints = {
         @UniqueConstraint(columnNames = "id")})
 @Setter
 @Getter
@@ -21,15 +21,20 @@ public class Student {
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "groupId")
+    @Column(name = "groupId", nullable = false)
     private Integer groupId;
 
-    @Column(name = "yearOfAdmission")
+    @Column(name = "yearOfAdmission", nullable = false)
     private Integer yearOfAdmission;
+
+/*    @ManyToOne()
+    @JoinColumn(name = "name")
+    private StudyGroup studyGroup;*/
+
 }

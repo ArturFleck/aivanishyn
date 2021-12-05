@@ -11,22 +11,21 @@ public class StudentDAO {
     //public Student get(Integer id){}
     //public Student saveOrUpdate (Student student){}
 
-    public List<Student> getAll() {
+    public void getAll(){
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
         Query query = session.createQuery("FROM Student");
-        List<Student> list = (List<Student>) query.list();
+        List<Student> studentList = (List<Student>) query.list();
         session.getTransaction().commit();
-        session.close();
+        //session.close();
 
-        //if (list != null && !list.isEmpty()) {
-            for (Student st : list)
+        if (studentList != null && !studentList.isEmpty()) {
+            for (Student st : studentList)
                 System.out.println(st);
-        //}
+        }
 
         HibernateUtil.shutdown();
-        return null;
     }
 
     //public List<Student> findByNameContaining(String partOfFullName){}
