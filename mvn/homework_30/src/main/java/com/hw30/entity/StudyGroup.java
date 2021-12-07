@@ -28,8 +28,10 @@ public class StudyGroup {
     @Column(name = "groupName", nullable = false)
     private String groupName;
 
-    @OneToMany(cascade=CascadeType.ALL)
+    // если раскоментить то не собирается проект нужно комментить OneToOne в Student
+    // но здесь хотябы подставляет правильно студентов к группе
+    /*@OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name="groupId")
-    private Set<Student> students = new HashSet<Student>();
+    private Set<Student> students = new HashSet<Student>();*/
 }
 
