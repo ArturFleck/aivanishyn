@@ -41,5 +41,27 @@ public class Main {
 /*        StudyGroupDAO studyGroupDAO = new StudyGroupDAO();
         studyGroupDAO.getAll();*/
 
+
+        // тестовые данные
+/*
+        create database test;
+        use test;
+        select * from student;
+        select * from studygroup;
+        drop schema test;
+
+        insert into studygroup(groupName) values
+                ('AA-075'),
+                ('AI-082'),
+                ('AX-696');
+
+        insert into student (firstName, lastName, yearOfAdmission, groupId) values
+                ('Alex','Band',2005,3),
+                ('Brenth','Smith',2005,2),
+        ('Petr','Ivanov',2005,1),
+        ('Max','Samsov',2005,1),
+        ('Pat','Smear',2005,1),
+        ('Ringo','Starr',2005,2);*/
+
     }
 }
