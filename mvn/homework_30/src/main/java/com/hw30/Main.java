@@ -38,6 +38,7 @@ public class Main {
         StudentDAO studentDAO = new StudentDAO();
         studentDAO.getAll();
 
+        
 /*        StudyGroupDAO studyGroupDAO = new StudyGroupDAO();
         studyGroupDAO.getAll();*/
 
