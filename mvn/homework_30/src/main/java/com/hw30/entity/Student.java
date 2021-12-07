@@ -8,13 +8,13 @@ import lombok.experimental.Accessors;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.StringJoiner;
 
 @Entity
 @Table(name = "student", uniqueConstraints = {
         @UniqueConstraint(columnNames = "id")})
 @Setter
 @Getter
-@ToString
 @Accessors(chain = true)
 public class Student {
 
@@ -29,17 +29,24 @@ public class Student {
     @Column(name = "lastName", nullable = false)
     private String lastName;
 
-    @Column(name = "groupId", nullable = false)
-    private Integer groupId;
-
     @Column(name = "yearOfAdmission", nullable = false)
     private Integer yearOfAdmission;
 
     // если раскоментить то он проект не собирается нужно коментить OneToMany в StudyGroup и пересоздавать таблицу
     // привязывается по id студента и выдает группу с таким же id
     // та же проблема и с StudyGroup
-    @OneToOne //(cascade=CascadeType.ALL)
-    @JoinColumn(name="id")
+    @ManyToOne //(cascade=CascadeType.ALL)
+    @JoinColumn(name="study_group_id", nullable = false)
     private StudyGroup studyGroup;
 
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Student.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("firstName='" + firstName + "'")
+                .add("lastName='" + lastName + "'")
+                .add("yearOfAdmission=" + yearOfAdmission)
+                .add("studyGroup=" + studyGroup.getGroupName())
+                .toString();
+    }
 }

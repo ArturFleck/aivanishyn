@@ -30,8 +30,7 @@ public class StudyGroup {
 
     // если раскоментить то не собирается проект нужно комментить OneToOne в Student
     // но здесь хотябы подставляет правильно студентов к группе
-    /*@OneToMany(cascade=CascadeType.ALL)
-    @JoinColumn(name="groupId")
-    private Set<Student> students = new HashSet<Student>();*/
+    @OneToMany(mappedBy = "studyGroup", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<Student> students;
 }
 

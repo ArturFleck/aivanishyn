@@ -13,19 +13,14 @@ public class StudentDAO {
 
     public void getAll(){
         Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
 
         Query query = session.createQuery("FROM Student");
         List<Student> studentList = (List<Student>) query.list();
-        session.getTransaction().commit();
-        //session.close();
 
         if (studentList != null && !studentList.isEmpty()) {
             for (Student st : studentList)
                 System.out.println(st);
         }
-
-        HibernateUtil.shutdown();
     }
 
     //public List<Student> findByNameContaining(String partOfFullName){}

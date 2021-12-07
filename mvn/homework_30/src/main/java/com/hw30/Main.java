@@ -14,33 +14,37 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-/*        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
         StudyGroup sg = new StudyGroup();
         sg.setGroupName("AE-074");
         session.save(sg);
 
+        StudyGroup sg1 = new StudyGroup();
+        sg1.setGroupName("KK-888");
+        session.save(sg1);
+
         Student st = new Student();
         st.setFirstName("James")
                 .setLastName("Cameron")
-                .setGroupId(1)
-                .setYearOfAdmission(2007);
+                .setYearOfAdmission(2007)
+                .setStudyGroup(sg);
         session.save(st);
 
         session.getTransaction().commit();
-        HibernateUtil.shutdown();*/
 
         // и проблемма еще здесь
         // я могу использовать только один метод или StudentDAO или StudyGroupDAO
         // оба метода не работают. проект не собирается
         // так же если закрыть сессию или в StudentDAO или в StudyGroupDAO проект не собирается
+//        System.out.println("hello");
         StudentDAO studentDAO = new StudentDAO();
         studentDAO.getAll();
 
-        
-/*        StudyGroupDAO studyGroupDAO = new StudyGroupDAO();
-        studyGroupDAO.getAll();*/
+
+        StudyGroupDAO studyGroupDAO = new StudyGroupDAO();
+        studyGroupDAO.getAll();
 
 
         // тестовые данные

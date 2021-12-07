@@ -13,19 +13,14 @@ public class StudyGroupDAO {
 
     public void getAll(){
         Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
 
         Query query = session.createQuery("FROM StudyGroup");
         List<StudyGroup> groupList = (List<StudyGroup>) query.list();
-        session.getTransaction().commit();
-        //session.close();
 
         if (groupList != null && !groupList.isEmpty()) {
             for (StudyGroup sg : groupList)
                 System.out.println(sg);
         }
-
-        HibernateUtil.shutdown();
     }
 
 /*    public StudyGroup saveOrUpdate(StudyGroup studyGroup) {
