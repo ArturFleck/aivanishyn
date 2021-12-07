@@ -8,20 +8,35 @@ import org.hibernate.Session;
 import java.util.List;
 
 public class StudentDAO {
-    //public Student get(Integer id){}
+    public Student getStudentById(Integer id){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        Query query = session.createQuery("FROM Student where id=" + id);
+        Student student = (Student) query.list();
+        return student;
+    }
+
     //public Student saveOrUpdate (Student student){}
 
-    public void getAll(){
+    public static List<Student> getAll(){
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         Query query = session.createQuery("FROM Student");
         List<Student> studentList = (List<Student>) query.list();
 
-        if (studentList != null && !studentList.isEmpty()) {
+        /*if (studentList != null && !studentList.isEmpty()) {
             for (Student st : studentList)
                 System.out.println(st);
-        }
+        }*/
+
+        return studentList;
     }
 
-    //public List<Student> findByNameContaining(String partOfFullName){}
+    public List<Student> findByLastNameContaining(String partOfLastName){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        String find = "'%" + partOfLastName + "%'";
+        Query query = session.createQuery("FROM Student where lastName like " + find);
+        List<Student> studentList = (List<Student>) query.list();
+        return studentList;
+    }
 }

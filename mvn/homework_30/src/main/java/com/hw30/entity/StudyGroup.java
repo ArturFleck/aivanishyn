@@ -28,8 +28,6 @@ public class StudyGroup {
     @Column(name = "groupName", nullable = false)
     private String groupName;
 
-    // если раскоментить то не собирается проект нужно комментить OneToOne в Student
-    // но здесь хотябы подставляет правильно студентов к группе
     @OneToMany(mappedBy = "studyGroup", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Student> students;
 }

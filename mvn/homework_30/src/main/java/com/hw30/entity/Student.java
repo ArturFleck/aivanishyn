@@ -32,10 +32,7 @@ public class Student {
     @Column(name = "yearOfAdmission", nullable = false)
     private Integer yearOfAdmission;
 
-    // если раскоментить то он проект не собирается нужно коментить OneToMany в StudyGroup и пересоздавать таблицу
-    // привязывается по id студента и выдает группу с таким же id
-    // та же проблема и с StudyGroup
-    @ManyToOne //(cascade=CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="study_group_id", nullable = false)
     private StudyGroup studyGroup;
 

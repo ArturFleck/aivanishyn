@@ -11,16 +11,18 @@ public class StudyGroupDAO {
 /*    public StudyGroup get(Integer id) {
     }*/
 
-    public void getAll(){
+    public List<StudyGroup> getAll(){
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         Query query = session.createQuery("FROM StudyGroup");
         List<StudyGroup> groupList = (List<StudyGroup>) query.list();
 
-        if (groupList != null && !groupList.isEmpty()) {
+        /*if (groupList != null && !groupList.isEmpty()) {
             for (StudyGroup sg : groupList)
                 System.out.println(sg);
-        }
+        }*/
+
+        return groupList;
     }
 
 /*    public StudyGroup saveOrUpdate(StudyGroup studyGroup) {

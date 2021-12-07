@@ -14,38 +14,32 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        /*Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
         StudyGroup sg = new StudyGroup();
-        sg.setGroupName("AE-074");
+        sg.setGroupName("AM-031");
         session.save(sg);
 
-        StudyGroup sg1 = new StudyGroup();
-        sg1.setGroupName("KK-888");
-        session.save(sg1);
-
         Student st = new Student();
-        st.setFirstName("James")
-                .setLastName("Cameron")
-                .setYearOfAdmission(2007)
+        st.setFirstName("Roger")
+                .setLastName("Taylor")
+                .setYearOfAdmission(2003)
                 .setStudyGroup(sg);
         session.save(st);
 
-        session.getTransaction().commit();
+        session.getTransaction().commit();*/
 
-        // и проблемма еще здесь
-        // я могу использовать только один метод или StudentDAO или StudyGroupDAO
-        // оба метода не работают. проект не собирается
-        // так же если закрыть сессию или в StudentDAO или в StudyGroupDAO проект не собирается
-//        System.out.println("hello");
+
         StudentDAO studentDAO = new StudentDAO();
-        studentDAO.getAll();
+        //print(studentDAO.getAll());
 
 
         StudyGroupDAO studyGroupDAO = new StudyGroupDAO();
-        studyGroupDAO.getAll();
+        //print(studyGroupDAO.getAll());
 
+        //print((List) studentDAO.getStudentById(3));
+        System.out.println(studentDAO.getStudentById((Integer) 1));
 
         // тестовые данные
 /*
@@ -67,6 +61,14 @@ public class Main {
         ('Max','Samsov',2005,1),
         ('Pat','Smear',2005,1),
         ('Ringo','Starr',2005,2);*/
+
+    }
+    public static void print(List list){
+
+        if (list != null && !list.isEmpty()) {
+            for (Object st : list)
+                System.out.println(st);
+        }
 
     }
 }
