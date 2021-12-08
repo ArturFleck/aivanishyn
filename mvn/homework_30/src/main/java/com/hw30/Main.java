@@ -33,8 +33,8 @@ public class Main {
 
         StudentDAO studentDAO = new StudentDAO();
         //printList(studentDAO.getAll());
-        //System.out.println(studentDAO.getStudentById(2));
-        printList(studentDAO.findByLastNameContaining("ar"));
+        System.out.println(studentDAO.getStudentById(2));
+        //printList(studentDAO.findByLastNameContaining("ar"));
 
 
         StudyGroupDAO studyGroupDAO = new StudyGroupDAO();

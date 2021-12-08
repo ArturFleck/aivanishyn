@@ -13,12 +13,13 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class StudentDAO {
-    public static List<Student> getAll(){
+    public static List<Student> getAll() {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         Query query = session.createQuery("FROM Student");
         List<Student> studentList = (List<Student>) query.list();
 
+        // just an reminder
         /*if (studentList != null && !studentList.isEmpty()) {
             for (Student st : studentList)
                 System.out.println(st);
@@ -27,28 +28,45 @@ public class StudentDAO {
         return studentList;
     }
 
-    public Student getStudentById(Integer id){
-        List<Student> studentList = getAll();
+    public Student getStudentById(Integer id) {
+/**
+*      First realisation
+*/
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query query = session.createQuery("FROM Student where id =" + id);
+        return (Student) query.uniqueResult();
+
+/**
+ *      Second realisation
+ */
+
+/*        List<Student> studentList = getAll();
         Student student = null;
 
         for (Student st : studentList){
             if (st.getId()==id){
                 student = st;
-                /*System.out.println(st);*/
+                //System.out.println(st);
             }
         }
+        return student;*/
 
-/*        studentList.stream()
+/**
+ *      here just an idea
+ */
+        //    I have an idea that to take student from List of Students using stream, but I have no idea how to make it work. cast to Student doesn't work
+        // even if I create Student object I don't know how to write data into it
+/*        List<Student> studentList = getAll();
+*//*                studentList.stream()
                 .filter(x-> Objects.equals(x.getId(), id))
                 .peek(System.out::println)
-                .collect(Collectors.toList());*/
-
-        return student;
+                .collect(Collectors.toList());*//*
+        return null;*/
     }
 
-    public List<Student> findByLastNameContaining(String partOfLastName){
+    public List<Student> findByLastNameContaining(String partOfLastName) {
 /**     First realisation of getting student by partOfLastName
-  */
+ */
         Session session = HibernateUtil.getSessionFactory().openSession();
         String find = "'%" + partOfLastName + "%'";
 
@@ -69,7 +87,7 @@ public class StudentDAO {
 
 /**     Third realisation of getting student by partOfLastName
  *          here I'm streaming from List of Students
-*/
+ */
 /*        List<Student> studentList = getAll();
         return studentList.stream()
                 .filter(x-> x.getLastName().contains(partOfLastName))
