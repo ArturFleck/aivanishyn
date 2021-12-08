@@ -6,16 +6,26 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 public class StudentDAO {
     public Student getStudentById(Integer id){
-        List<Student> students=  getAll();
+        List<Student> studentList =  getAll();
         Student student = null;
-        for (int i=1; i< students.size()+1;i++){
-            if (students.get(i).getId()==id){
 
+        for (Student st : studentList){
+            if (st.getId()==id){
+                student = st;
             }
+            //System.out.println(st);
         }
+
+        /*studentList.stream()
+                .filter(x->x.getId()==id )
+                .peek(System.out::println)
+                .collect(Collectors.toList());*/
+
         return student;
     }
 

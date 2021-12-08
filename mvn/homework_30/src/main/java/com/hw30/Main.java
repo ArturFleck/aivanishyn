@@ -32,14 +32,14 @@ public class Main {
 
 
         StudentDAO studentDAO = new StudentDAO();
-        //print(studentDAO.getAll());
+        //printList(studentDAO.getAll());
 
 
         StudyGroupDAO studyGroupDAO = new StudyGroupDAO();
-        //print(studyGroupDAO.getAll());
+        //printList(studyGroupDAO.getAll());
 
-        //print((List) studentDAO.getStudentById(3));
-        System.out.println(studentDAO.getStudentById((Integer) 1));
+        //studentDAO.getStudentById(5);
+        System.out.println(studentDAO.getStudentById(2));
 
         // тестовые данные
 /*
@@ -50,25 +50,23 @@ public class Main {
         drop schema test;
 
         insert into studygroup(groupName) values
-                ('AA-075'),
-                ('AI-082'),
-                ('AX-696');
+        ('AA-075'),
+        ('AI-082'),
+        ('AX-696');
 
         insert into student (firstName, lastName, yearOfAdmission, groupId) values
-                ('Alex','Band',2005,3),
-                ('Brenth','Smith',2005,2),
+        ('Alex','Band',2005,3),
+        ('Brenth','Smith',2005,2),
         ('Petr','Ivanov',2005,1),
         ('Max','Samsov',2005,1),
         ('Pat','Smear',2005,1),
         ('Ringo','Starr',2005,2);*/
 
     }
-    public static void print(List list){
-
+    public static void printList(List list){
         if (list != null && !list.isEmpty()) {
             for (Object st : list)
                 System.out.println(st);
         }
-
     }
 }
