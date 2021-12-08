@@ -33,27 +33,17 @@ public class Main {
         StudentDAO studentDAO = new StudentDAO();
         //printList(studentDAO.getAll());
         //System.out.println(studentDAO.getStudentById(3));
-        //printList(studentDAO.findByLastNameContaining("ar"));
-
-        /////////////////////////////////////////////////////////////////////
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        StudyGroup sg = new StudyGroup();
-        sg.setGroupName("AM-031");
-        session.save(sg);
-        session.getTransaction().commit();
 
         Student st = new Student();
-        st.setId(3)
-                .setFirstName("Benny")
-                .setLastName("Bennasy")
-                .setYearOfAdmission(2021)
-                .setStudyGroup(studentDAO.getStudentById(1).getStudyGroup()); //// HERE IS THE PROBLEM
+        st.setId(2)
+                .setFirstName("Chad")
+                .setLastName("Croeger")
+                .setYearOfAdmission(2012)
+                .setStudyGroup(studentDAO.getStudentById(2).getStudyGroup()); //// HERE IS THE PROBLEM
         System.out.println(st);
-        studentDAO.saveOrUpdate(st);
-        /////////////////////////////////////////////////////////////////////
+        System.out.println(studentDAO.saveOrUpdate(st));
 
-        //System.out.println(studentDAO.getStudentById(3));
+        //printList(studentDAO.findByLastNameContaining("ar"));
 
         StudyGroupDAO studyGroupDAO = new StudyGroupDAO();
         //printList(studyGroupDAO.getAll());

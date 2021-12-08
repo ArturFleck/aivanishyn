@@ -100,13 +100,24 @@ public class StudentDAO {
         Student st = getStudentById(student.getId());
         if (st != null) {
             Session session = HibernateUtil.getSessionFactory().openSession();
-            Transaction transaction = session.beginTransaction();
+
+            // That was an idea but it doesn't work with trying to change  study_group_id= "+ student.getStudyGroup()
+            // without changing group it works
+            /*Transaction transaction = session.beginTransaction();
             String qryString = "update Student s set s.firstName='" + student.getFirstName() + "', s.lastName='" + student.getLastName() + "', s.yearOfAdmission=" +
-                    student.getYearOfAdmission() + " where s.id=" + student.getId();
+                    student.getYearOfAdmission() + ", study_group_id= "+ student.getStudyGroup() + " where s.id=" + student.getId();
             Query query = session.createQuery(qryString);
             int count = query.executeUpdate();
             System.err.println(count + " Record(s) Updated.");
-            transaction.commit();
+            transaction.commit();*/
+
+            //System.out.println(st);
+            st.setFirstName(student.getFirstName());
+            st.setLastName(student.getLastName());
+            st.setYearOfAdmission(student.getYearOfAdmission());
+            st.setStudyGroup(student.getStudyGroup());
+            session.saveOrUpdate(st);
+            //System.out.println(st);
         }
         return student;
     }
