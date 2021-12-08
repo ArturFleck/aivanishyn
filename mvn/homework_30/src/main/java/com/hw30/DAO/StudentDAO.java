@@ -5,6 +5,7 @@ import com.hw30.entity.Student;
 import com.hw30.entity.StudyGroup;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.util.List;
 import java.util.Objects;
@@ -19,7 +20,7 @@ public class StudentDAO {
         Query query = session.createQuery("FROM Student");
         List<Student> studentList = (List<Student>) query.list();
 
-        // just an reminder
+        // just a reminder
         /*if (studentList != null && !studentList.isEmpty()) {
             for (Student st : studentList)
                 System.out.println(st);
@@ -30,8 +31,8 @@ public class StudentDAO {
 
     public Student getStudentById(Integer id) {
 /**
-*      First realisation
-*/
+ *      First realisation
+ */
         Session session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.createQuery("FROM Student where id =" + id);
         return (Student) query.uniqueResult();
@@ -56,8 +57,8 @@ public class StudentDAO {
  */
         //    idea that to take student from List of Students using stream, but I have no idea how to make it work. cast to Student doesn't work
         // even if I create Student object I don't know how to write data into it
-/*        List<Student> studentList = getAll();
-*//*                studentList.stream()
+        /*        List<Student> studentList = getAll();
+         *//*                studentList.stream()
                 .filter(x-> Objects.equals(x.getId(), id))
                 .peek(System.out::println)
                 .collect(Collectors.toList());*//*
@@ -95,5 +96,18 @@ public class StudentDAO {
                 .collect(Collectors.toList());*/
     }
 
-    //public Student saveOrUpdate (Student student){}
+    public Student saveOrUpdate(Student student) {
+        Student st = getStudentById(student.getId());
+        if (st != null) {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            Transaction transaction = session.beginTransaction();
+            String qryString = "update Student s set s.firstName='" + student.getFirstName() + "', s.lastName='" + student.getLastName() + "', s.yearOfAdmission=" +
+                    student.getYearOfAdmission() + " where s.id=" + student.getId();
+            Query query = session.createQuery(qryString);
+            int count = query.executeUpdate();
+            System.err.println(count + " Record(s) Updated.");
+            transaction.commit();
+        }
+        return student;
+    }
 }

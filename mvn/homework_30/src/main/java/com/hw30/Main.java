@@ -30,18 +30,33 @@ public class Main {
 
         session.getTransaction().commit();*/
 
-
         StudentDAO studentDAO = new StudentDAO();
         //printList(studentDAO.getAll());
-        System.out.println(studentDAO.getStudentById(2));
+        //System.out.println(studentDAO.getStudentById(3));
         //printList(studentDAO.findByLastNameContaining("ar"));
 
+        /////////////////////////////////////////////////////////////////////
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        StudyGroup sg = new StudyGroup();
+        sg.setGroupName("AM-031");
+        session.save(sg);
+        session.getTransaction().commit();
+
+        Student st = new Student();
+        st.setId(3)
+                .setFirstName("Benny")
+                .setLastName("Bennasy")
+                .setYearOfAdmission(2021)
+                .setStudyGroup(studentDAO.getStudentById(1).getStudyGroup()); //// HERE IS THE PROBLEM
+        System.out.println(st);
+        studentDAO.saveOrUpdate(st);
+        /////////////////////////////////////////////////////////////////////
+
+        //System.out.println(studentDAO.getStudentById(3));
 
         StudyGroupDAO studyGroupDAO = new StudyGroupDAO();
         //printList(studyGroupDAO.getAll());
-
-
-
 
     }
     public static void printList(List list){
