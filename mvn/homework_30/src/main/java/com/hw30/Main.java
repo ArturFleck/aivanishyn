@@ -33,34 +33,15 @@ public class Main {
 
         StudentDAO studentDAO = new StudentDAO();
         //printList(studentDAO.getAll());
+        //System.out.println(studentDAO.getStudentById(2));
+        printList(studentDAO.findByLastNameContaining("ar"));
 
 
         StudyGroupDAO studyGroupDAO = new StudyGroupDAO();
         //printList(studyGroupDAO.getAll());
 
-        //studentDAO.getStudentById(5);
-        System.out.println(studentDAO.getStudentById(2));
 
-        // тестовые данные
-/*
-        create database test;
-        use test;
-        select * from student;
-        select * from studygroup;
-        drop schema test;
 
-        insert into studygroup(groupName) values
-        ('AA-075'),
-        ('AI-082'),
-        ('AX-696');
-
-        insert into student (firstName, lastName, yearOfAdmission, groupId) values
-        ('Alex','Band',2005,3),
-        ('Brenth','Smith',2005,2),
-        ('Petr','Ivanov',2005,1),
-        ('Max','Samsov',2005,1),
-        ('Pat','Smear',2005,1),
-        ('Ringo','Starr',2005,2);*/
 
     }
     public static void printList(List list){
