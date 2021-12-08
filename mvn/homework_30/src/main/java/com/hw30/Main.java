@@ -35,11 +35,11 @@ public class Main {
         //System.out.println(studentDAO.getStudentById(3));
 
         Student st = new Student();
-        st.setId(2)
-                .setFirstName("Chad")
-                .setLastName("Croeger")
-                .setYearOfAdmission(2012)
-                .setStudyGroup(studentDAO.getStudentById(2).getStudyGroup()); //// HERE IS THE PROBLEM
+        st.setId(12)
+                .setFirstName("Son")
+                .setLastName("Jamm")
+                .setYearOfAdmission(2022)
+                .setStudyGroup(studentDAO.getStudentById(1).getStudyGroup()); //// HERE IS THE PROBLEM
         System.out.println(st);
         System.out.println(studentDAO.saveOrUpdate(st));
 

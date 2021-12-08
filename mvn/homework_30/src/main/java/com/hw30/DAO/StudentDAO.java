@@ -100,24 +100,38 @@ public class StudentDAO {
         Student st = getStudentById(student.getId());
         if (st != null) {
             Session session = HibernateUtil.getSessionFactory().openSession();
-
-            // That was an idea but it doesn't work with trying to change  study_group_id= "+ student.getStudyGroup()
-            // without changing group it works
-            /*Transaction transaction = session.beginTransaction();
-            String qryString = "update Student s set s.firstName='" + student.getFirstName() + "', s.lastName='" + student.getLastName() + "', s.yearOfAdmission=" +
-                    student.getYearOfAdmission() + ", study_group_id= "+ student.getStudyGroup() + " where s.id=" + student.getId();
-            Query query = session.createQuery(qryString);
-            int count = query.executeUpdate();
-            System.err.println(count + " Record(s) Updated.");
-            transaction.commit();*/
-
+            Transaction transaction = session.beginTransaction();
             //System.out.println(st);
             st.setFirstName(student.getFirstName());
             st.setLastName(student.getLastName());
             st.setYearOfAdmission(student.getYearOfAdmission());
             st.setStudyGroup(student.getStudyGroup());
             session.saveOrUpdate(st);
+            transaction.commit();
             //System.out.println(st);
+
+            // That was an idea but it doesn't work with trying to change  study_group_id= "+ student.getStudyGroup()
+            // without changing group it works
+ /*           String qryString = "update Student s set s.firstName='" + student.getFirstName() + "', s.lastName='" + student.getLastName() + "', s.yearOfAdmission=" +
+                    student.getYearOfAdmission() + ", study_group_id= "+ student.getStudyGroup() + " where s.id=" + student.getId();
+            Query query = session.createQuery(qryString);
+            int count = query.executeUpdate();
+            System.err.println(count + " Record(s) Updated.");
+            transaction.commit();*/
+        }
+        else{
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+
+            Student stud = new Student();
+            stud.setId(student.getId());
+            stud.setFirstName(student.getFirstName());
+            stud.setLastName(student.getLastName());
+            stud.setYearOfAdmission(student.getYearOfAdmission());
+            stud.setStudyGroup(student.getStudyGroup());
+            session.save(stud);
+
+            session.getTransaction().commit();
         }
         return student;
     }
