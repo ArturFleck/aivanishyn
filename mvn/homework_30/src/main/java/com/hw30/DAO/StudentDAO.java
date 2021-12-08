@@ -54,7 +54,7 @@ public class StudentDAO {
 /**
  *      here just an idea
  */
-        //    I have an idea that to take student from List of Students using stream, but I have no idea how to make it work. cast to Student doesn't work
+        //    idea that to take student from List of Students using stream, but I have no idea how to make it work. cast to Student doesn't work
         // even if I create Student object I don't know how to write data into it
 /*        List<Student> studentList = getAll();
 *//*                studentList.stream()
