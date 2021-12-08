@@ -9,10 +9,13 @@ import java.util.List;
 
 public class StudentDAO {
     public Student getStudentById(Integer id){
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Student> students=  getAll();
+        Student student = null;
+        for (int i=1; i< students.size()+1;i++){
+            if (students.get(i).getId()==id){
 
-        Query query = session.createQuery("FROM Student where id=" + id);
-        Student student = (Student) query.list();
+            }
+        }
         return student;
     }
 
