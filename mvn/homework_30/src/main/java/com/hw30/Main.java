@@ -64,3 +64,25 @@ public class Main {
         }
     }
 }
+
+/**
+ *      TEST DATA
+ */
+/*    drop schema test;
+        create database test;
+        use test;
+        select * from student;
+        select * from studygroup;
+
+        insert into studygroup(groupName) values
+        ('AA-075'),
+        ('AI-082'),
+        ('AX-696');
+
+        insert into student (firstName, lastName, yearOfAdmission, study_group_id) values
+        ('Alex','Band',2005,3),
+        ('Brenth','Smith',2005,2),
+        ('Petr','Ivanov',2005,1),
+        ('Max','Samsov',2005,1),
+        ('Pat','Smear',2005,1),
+        ('Ringo','Starr',2005,2);*/
