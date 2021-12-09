@@ -32,26 +32,29 @@ public class Main {
 
         StudentDAO studentDAO = new StudentDAO();
         //printList(studentDAO.getAll());
-        //System.out.println(studentDAO.getStudentById(3));
 
-/*        Student st = new Student();
-        st.setId(1)
-                .setFirstName("Son")
-                .setLastName("Jamm")
-                .setYearOfAdmission(2022)
-                .setStudyGroup(studentDAO.getStudentById(1).getStudyGroup()); //// HERE IS THE PROBLEM
-        System.out.println(st);                             // Before saving
-        System.out.println(studentDAO.saveOrUpdate(st));    // After saving*/
+        //System.out.println(studentDAO.getStudentById(3));
 
         //printList(studentDAO.findByLastNameContaining("ar"));
 
+/*        Student st = new Student();
+        st.setId(21)
+                .setFirstName("Gerry")
+                .setLastName("Beausy")
+                .setYearOfAdmission(2002)
+                .setStudyGroup(studentDAO.getStudentById(2).getStudyGroup()); // Taking StudyGroup from other Student
+        System.out.println(studentDAO.saveOrUpdate(st));*/
+
+
         StudyGroupDAO studyGroupDAO = new StudyGroupDAO();
         //printList(studyGroupDAO.getAll());
+
         //System.out.println(studyGroupDAO.getStudyGroupById(2));
-        StudyGroup sg = new StudyGroup();
-        sg.setId(1)
-                .setGroupName("AX-XXX");
-        studyGroupDAO.saveOrUpdate(sg);
+
+/*        StudyGroup sg = new StudyGroup();
+        sg.setId(7)
+                .setGroupName("AW-02X");
+        System.out.println( studyGroupDAO.saveOrUpdate(sg));*/
 
     }
     public static void printList(List list){

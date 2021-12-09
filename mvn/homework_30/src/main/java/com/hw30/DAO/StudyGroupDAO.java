@@ -32,12 +32,19 @@ public class StudyGroupDAO {
         Transaction transaction = session.beginTransaction();
         if (sg == null) {
             sg= new StudyGroup();
+            sg.setGroupName(studyGroup.getGroupName());
+            session.saveOrUpdate(sg);
+            transaction.commit();
+            System.err.println( "Record Created.");
+        }else{
+            String qryString = "update StudyGroup s set s.groupName='" + studyGroup.getGroupName() + "' where s.id=" + studyGroup.getId();
+            Query query = session.createQuery(qryString);
+            query.executeUpdate();
+            System.err.println("Record Updated.");
+            transaction.commit();
+            sg.setId(studyGroup.getId());
         }
-        System.out.println(sg);
-        sg.setGroupName(studyGroup.getGroupName());
-        session.saveOrUpdate(sg);
-        transaction.commit();
-        System.out.println(sg);
+
         return sg;
     }
 }

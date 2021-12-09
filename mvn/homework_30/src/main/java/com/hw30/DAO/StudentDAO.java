@@ -72,6 +72,7 @@ public class StudentDAO {
         List<Student> studentList = (List<Student>) query.list();
         return studentList;
 
+
 /**     Second realisation of getting student by partOfLastName
  *          here I'm getting from List of Students and put them into new List
  */
@@ -95,24 +96,29 @@ public class StudentDAO {
 
     public Student saveOrUpdate(Student student) {
         Student st = getStudentById(student.getId());
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
+        Session session1 = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session1.beginTransaction();
+        boolean flag = false;
         if (st == null) {
-            st= new Student();
+            st = new Student();
+            flag = true;
         }
-            //System.out.println(st);
-            st.setFirstName(student.getFirstName());
-            st.setLastName(student.getLastName());
-            st.setYearOfAdmission(student.getYearOfAdmission());
-            st.setStudyGroup(student.getStudyGroup());
-            session.saveOrUpdate(st);
-            transaction.commit();
-            //System.out.println(st);
+        st.setFirstName(student.getFirstName());
+        st.setLastName(student.getLastName());
+        st.setYearOfAdmission(student.getYearOfAdmission());
+        st.setStudyGroup(student.getStudyGroup());
+        session1.saveOrUpdate(st);
+        transaction.commit();
+        if (flag) {
+            System.err.println("Record Created.");
+        } else {
+            System.err.println("Record Updated.");
+        }
 /**
  *          An IDEA how to use QUERY
  */
-            // it doesn't work with trying to change study_group_id= "+ student.getStudyGroup()
-            // without changing group it works
+        // it doesn't work with trying to change study_group_id= "+ student.getStudyGroup()
+        // without changing group it works
  /*           String qryString = "update Student s set s.firstName='" + student.getFirstName() + "', s.lastName='" + student.getLastName() + "', s.yearOfAdmission=" +
                     student.getYearOfAdmission() + ", study_group_id= "+ student.getStudyGroup() + " where s.id=" + student.getId();
             Query query = session.createQuery(qryString);
