@@ -40,8 +40,8 @@ public class Main {
                 .setLastName("Jamm")
                 .setYearOfAdmission(2022)
                 .setStudyGroup(studentDAO.getStudentById(1).getStudyGroup()); //// HERE IS THE PROBLEM
-        System.out.println(st);
-        System.out.println(studentDAO.saveOrUpdate(st));*/
+        System.out.println(st);                             // Before saving
+        System.out.println(studentDAO.saveOrUpdate(st));    // After saving*/
 
         //printList(studentDAO.findByLastNameContaining("ar"));
 
