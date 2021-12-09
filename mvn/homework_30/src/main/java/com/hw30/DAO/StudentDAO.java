@@ -119,6 +119,6 @@ public class StudentDAO {
             int count = query.executeUpdate();
             System.err.println(count + " Record(s) Updated.");
             transaction.commit();*/
-        return student;
+        return st;
     }
 }

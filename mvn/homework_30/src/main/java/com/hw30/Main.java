@@ -34,19 +34,24 @@ public class Main {
         //printList(studentDAO.getAll());
         //System.out.println(studentDAO.getStudentById(3));
 
-        Student st = new Student();
+/*        Student st = new Student();
         st.setId(1)
                 .setFirstName("Son")
                 .setLastName("Jamm")
                 .setYearOfAdmission(2022)
                 .setStudyGroup(studentDAO.getStudentById(1).getStudyGroup()); //// HERE IS THE PROBLEM
         System.out.println(st);
-        System.out.println(studentDAO.saveOrUpdate(st));
+        System.out.println(studentDAO.saveOrUpdate(st));*/
 
         //printList(studentDAO.findByLastNameContaining("ar"));
 
         StudyGroupDAO studyGroupDAO = new StudyGroupDAO();
         //printList(studyGroupDAO.getAll());
+        //System.out.println(studyGroupDAO.getStudyGroupById(2));
+        StudyGroup sg = new StudyGroup();
+        sg.setId(1)
+                .setGroupName("AX-XXX");
+        studyGroupDAO.saveOrUpdate(sg);
 
     }
     public static void printList(List list){
