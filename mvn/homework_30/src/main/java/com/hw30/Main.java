@@ -35,7 +35,7 @@ public class Main {
         //System.out.println(studentDAO.getStudentById(3));
 
         Student st = new Student();
-        st.setId(12)
+        st.setId(1)
                 .setFirstName("Son")
                 .setLastName("Jamm")
                 .setYearOfAdmission(2022)
