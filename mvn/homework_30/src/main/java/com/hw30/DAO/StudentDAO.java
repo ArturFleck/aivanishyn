@@ -3,6 +3,7 @@ package com.hw30.DAO;
 import com.hw30.HibernateUtil;
 import com.hw30.entity.Student;
 import com.hw30.entity.StudyGroup;
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -16,16 +17,18 @@ import java.util.stream.Collectors;
 public class StudentDAO {
     public static List<Student> getAll() {
         Session session = HibernateUtil.getSessionFactory().openSession();
-
         Query query = session.createQuery("FROM Student");
-        List<Student> studentList = (List<Student>) query.list();
+
+        /*List<Student> studentList = (List<Student>) query.list();
 
         // just a reminder
-        /*if (studentList != null && !studentList.isEmpty()) {
+        *//*if (studentList != null && !studentList.isEmpty()) {
             for (Student st : studentList)
                 System.out.println(st);
-        }*/
-        return studentList;
+        }*//*
+        return studentList;*/
+
+        return (List<Student>) query.list();
     }
 
     public Student getStudentById(Integer id) {
@@ -33,8 +36,10 @@ public class StudentDAO {
  *      First realisation
  */
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Query query = session.createQuery("FROM Student where id =" + id);
-        return (Student) query.uniqueResult();
+/*        Query query = session.createQuery("FROM Student where id =" + id);
+        return (Student) query.uniqueResult();*/
+        return (Student) session.get(Student.class, id);    // simplify upper query session return
+
 
 /**
  *      Second realisation
@@ -69,8 +74,9 @@ public class StudentDAO {
         String find = "'%" + partOfLastName + "%'";
 
         Query query = session.createQuery("FROM Student where lastName like " + find);
-        List<Student> studentList = (List<Student>) query.list();
-        return studentList;
+/*        List<Student> studentList = (List<Student>) query.list();
+        return studentList;*/
+        return (List<Student>) query.list();
 
 
 /**     Second realisation of getting student by partOfLastName
@@ -95,25 +101,26 @@ public class StudentDAO {
     }
 
     public Student saveOrUpdate(Student student) {
-        Student st = getStudentById(student.getId());
-        Session session1 = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = session1.beginTransaction();
-        boolean flag = false;
-        if (st == null) {
-            st = new Student();
-            flag = true;
-        }
-        st.setFirstName(student.getFirstName());
-        st.setLastName(student.getLastName());
-        st.setYearOfAdmission(student.getYearOfAdmission());
-        st.setStudyGroup(student.getStudyGroup());
-        session1.saveOrUpdate(st);
-        transaction.commit();
-        if (flag) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        if (getStudentById(student.getId()) == null) {
+            session.save(student);
             System.err.println("Record Created.");
-        } else {
+        } else{
+            session.saveOrUpdate(student);
             System.err.println("Record Updated.");
         }
+        session.getTransaction().commit();
+        session.close();
+
+        /*try (Session session = HibernateUtil.getSessionFactory().openSession()){
+            session.beginTransaction();
+            session.saveOrUpdate(student);
+            session.getTransaction().commit();
+        }*/
+            return student;
+
 /**
  *          An IDEA how to use QUERY
  */
@@ -125,6 +132,6 @@ public class StudentDAO {
             int count = query.executeUpdate();
             System.err.println(count + " Record(s) Updated.");
             transaction.commit();*/
-        return st;
+
     }
 }

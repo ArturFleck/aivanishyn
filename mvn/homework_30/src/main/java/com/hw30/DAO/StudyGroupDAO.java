@@ -15,36 +15,42 @@ public class StudyGroupDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         Query query = session.createQuery("FROM StudyGroup");
-        List<StudyGroup> groupList = (List<StudyGroup>) query.list();
-
-        return groupList;
+ /*       List<StudyGroup> groupList = (List<StudyGroup>) query.list();
+        return groupList;*/
+        return (List<StudyGroup>) query.list();
     }
 
     public StudyGroup getStudyGroupById(Integer id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Query query = session.createQuery("FROM StudyGroup where id =" + id);
-        return (StudyGroup) query.uniqueResult();
+        /*Query query = session.createQuery("FROM StudyGroup where id =" + id);
+        return (StudyGroup) query.uniqueResult();*/
+        return (StudyGroup) session.get(StudyGroup.class, id);  // simplify upper query session return
     }
 
     public StudyGroup saveOrUpdate(StudyGroup studyGroup) {
-        StudyGroup sg = getStudyGroupById(studyGroup.getId());
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        if (sg == null) {
-            sg= new StudyGroup();
-            sg.setGroupName(studyGroup.getGroupName());
-            session.saveOrUpdate(sg);
-            transaction.commit();
+        session.beginTransaction();
+        if (getStudyGroupById(studyGroup.getId()) == null) {
+            session.save(studyGroup);
             System.err.println( "Record Created.");
         }else{
-            String qryString = "update StudyGroup s set s.groupName='" + studyGroup.getGroupName() + "' where s.id=" + studyGroup.getId();
-            Query query = session.createQuery(qryString);
-            query.executeUpdate();
+            session.saveOrUpdate(studyGroup);
             System.err.println("Record Updated.");
-            transaction.commit();
-            sg.setId(studyGroup.getId());
         }
+        session.getTransaction().commit();
+        session.close();
+        //---------------------------------------------
+        /*Session session  = HibernateUtil.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            session.saveOrUpdate(studyGroup);
+            session.getTransaction().commit();
+        }finally {
+            if (session != null) {
+                session.close();
+            }
+        }*/
 
-        return sg;
+        return studyGroup;
     }
 }

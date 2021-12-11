@@ -38,10 +38,10 @@ public class Main {
         //printList(studentDAO.findByLastNameContaining("ar"));
 
 /*        Student st = new Student();
-        st.setId(21)
+        st.setId(11)
                 .setFirstName("Gerry")
                 .setLastName("Beausy")
-                .setYearOfAdmission(2002)
+                .setYearOfAdmission(2005)
                 .setStudyGroup(studentDAO.getStudentById(2).getStudyGroup()); // Taking StudyGroup from other Student
         System.out.println(studentDAO.saveOrUpdate(st));*/
 
@@ -51,13 +51,14 @@ public class Main {
 
         //System.out.println(studyGroupDAO.getStudyGroupById(2));
 
-/*        StudyGroup sg = new StudyGroup();
-        sg.setId(7)
-                .setGroupName("AW-02X");
-        System.out.println( studyGroupDAO.saveOrUpdate(sg));*/
+        StudyGroup sg = new StudyGroup();
+        sg.setId(12)
+                .setGroupName("AS-555");
+        System.out.println(studyGroupDAO.saveOrUpdate(sg));
 
     }
-    public static void printList(List list){
+
+    public static void printList(List list) {
         if (list != null && !list.isEmpty()) {
             for (Object st : list)
                 System.out.println(st);
@@ -66,7 +67,7 @@ public class Main {
 }
 
 /**
- *      TEST DATA
+ * TEST DATA
  */
 /*    drop schema test;
         create database test;
@@ -74,15 +75,20 @@ public class Main {
         select * from student;
         select * from studygroup;
 
-        insert into studygroup(groupName) values
-        ('AA-075'),
-        ('AI-082'),
-        ('AX-696');
+insert into studyGroup (groupName) values
+('AI-085'),
+('AC-063'),
+('AA-162'),
+('AE-074');
 
-        insert into student (firstName, lastName, yearOfAdmission, study_group_id) values
-        ('Alex','Band',2005,3),
-        ('Brenth','Smith',2005,2),
-        ('Petr','Ivanov',2005,1),
-        ('Max','Samsov',2005,1),
-        ('Pat','Smear',2005,1),
-        ('Ringo','Starr',2005,2);*/
+insert into student(firstName, lastName, yearOfAdmission, study_group_id) values
+('Christopher','Nolan',2012,1),
+('Cris','Columbus',2013,2),
+('Redley','Scott',2005,1),
+('James','Cameron',2007,3),
+('Alex','Band',2005,3),
+('Brenth','Smith',2005,2),
+('Petr','Ivanov',2005,1),
+('Max','Paine',2005,1),
+('Pat','Smear',2005,1),
+('Ringo','Starr',2005,2);*/
