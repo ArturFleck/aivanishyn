@@ -104,22 +104,23 @@ public class StudentDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-        if (getStudentById(student.getId()) == null) {
+        if (student.getId() == null) {
             session.save(student);
             System.err.println("Record Created.");
-        } else{
+        } else {
             session.saveOrUpdate(student);
             System.err.println("Record Updated.");
         }
         session.getTransaction().commit();
         session.close();
+        return student;
 
-        /*try (Session session = HibernateUtil.getSessionFactory().openSession()){
+/*
             session.beginTransaction();
-            session.saveOrUpdate(student);
+            session.save(student);
             session.getTransaction().commit();
-        }*/
-            return student;
+            session.close();
+            return student;*/
 
 /**
  *          An IDEA how to use QUERY

@@ -37,13 +37,13 @@ public class Main {
 
         //printList(studentDAO.findByLastNameContaining("ar"));
 
-/*        Student st = new Student();
-        st.setId(11)
-                .setFirstName("Gerry")
-                .setLastName("Beausy")
-                .setYearOfAdmission(2005)
-                .setStudyGroup(studentDAO.getStudentById(2).getStudyGroup()); // Taking StudyGroup from other Student
-        System.out.println(studentDAO.saveOrUpdate(st));*/
+        Student st = new Student();
+        //st.setId(11)
+                st.setFirstName("Lionel")
+                .setLastName("Richie")
+                .setYearOfAdmission(2025)
+                .setStudyGroup(studentDAO.getStudentById(1).getStudyGroup()); // Taking StudyGroup from other Student
+        System.out.println(studentDAO.saveOrUpdate(st));
 
 
         StudyGroupDAO studyGroupDAO = new StudyGroupDAO();
@@ -51,10 +51,10 @@ public class Main {
 
         //System.out.println(studyGroupDAO.getStudyGroupById(2));
 
-        StudyGroup sg = new StudyGroup();
+        /*StudyGroup sg = new StudyGroup();
         sg.setId(12)
                 .setGroupName("AS-555");
-        System.out.println(studyGroupDAO.saveOrUpdate(sg));
+        System.out.println(studyGroupDAO.saveOrUpdate(sg));*/
 
     }
 
