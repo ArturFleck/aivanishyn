@@ -6,7 +6,7 @@ public class Task_13 {
         int n = 8;
         int m = 8;
 
-        String[][] array = new String[n][m];    // creating String Array but we can do output without it, just straight out in console
+        String[][] array = new String[n][m];    // creating String Array, but we can do output without it, just straight out in console
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
