@@ -1,11 +1,9 @@
 package homework_4;
-
 public class Task_9 {
     public static void main(String[] args) {
 
         int arr[] = {0, 2, 3, 0, 5, 4, 0};
         Array(arr);
-
     }
 
     public static void Array(int array[]) {

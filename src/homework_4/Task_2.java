@@ -7,7 +7,7 @@ public class Task_2 {
         Scanner scan = new Scanner(System.in);
         System.out.print("Enter number: ");
         int f = scan.nextInt();
-        int temp = 0;
+        int temp;
         if (f == 1 || f == 0) {
             System.out.println("Factorial of number " + f + "! is 1");
         } else {

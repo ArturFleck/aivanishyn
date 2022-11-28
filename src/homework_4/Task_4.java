@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Task_4 {
     public static void main(String[] args) {
-        task1();
+        //task1();
 
         Scanner scan = new Scanner(System.in);
         System.out.print("Enter number: ");
