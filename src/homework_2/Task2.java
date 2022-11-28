@@ -9,7 +9,7 @@ public class Task2 {
         int a, i = 0;
         double total = 0;
 
-        System.out.print("How many nubmers you gonna enter? ");
+        System.out.print("How many numbers you gonna enter? ");
         a = scanner.nextInt();
         while (i < a) {
             System.out.print("Enter number: ");
@@ -20,7 +20,7 @@ public class Task2 {
 
         total = 0;
         i = 0;
-        int k=0;
+        int k;
         System.out.print("\nThe average of random " + a + " numbers( ");
         while (i < a) {
             Random rand = new Random();
